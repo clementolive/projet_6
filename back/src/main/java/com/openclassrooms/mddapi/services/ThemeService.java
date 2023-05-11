@@ -14,6 +14,7 @@ public class ThemeService {
     public ThemesResponse findAll(){
         ThemesResponse themesResponse = new ThemesResponse();
         Theme[] themeList = themeRepository.findAll().toArray(new Theme[0]);
+        themesResponse.setThemes(themeList);
         return themesResponse;
     }
 

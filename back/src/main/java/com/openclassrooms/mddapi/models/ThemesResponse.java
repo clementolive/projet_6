@@ -9,7 +9,7 @@ public class ThemesResponse {
     Theme[] themes;
 
     public ThemesResponse(){
-        themes = new Theme[30];
+        themes = new Theme[3];
     }
 
 }
