@@ -1,0 +1,7 @@
+<h1>themes works!</h1>
+
+<div *ngFor="let theme of (themes$ | async)?.themes">
+<p>{{theme.title}}</p>
+<p>{{theme.description}}</p>
+
+</div>
