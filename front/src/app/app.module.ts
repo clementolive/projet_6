@@ -11,9 +11,10 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ArticlesComponent } from './features/articles/articles.component';
 import { ProfileComponent } from './features/profile/profile.component';
+import { CreateArticleComponent } from './features/create-article/create-article.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ThemesComponent, LoginComponent, RegisterComponent, NavbarComponent, ArticlesComponent, ProfileComponent],
+  declarations: [AppComponent, HomeComponent, ThemesComponent, LoginComponent, RegisterComponent, NavbarComponent, ArticlesComponent, ProfileComponent, CreateArticleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
