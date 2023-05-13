@@ -1,7 +1,24 @@
-<h1>themes works!</h1>
+<app-navbar></app-navbar>
 
-<div *ngFor="let theme of (themes$ | async)?.themes">
-<p>{{theme.title}}</p>
-<p>{{theme.description}}</p>
 
+<div class="row row-cols-2">
+
+    <div *ngFor="let theme of (themes$ | async)?.themes">
+        <div class="col">
+            <div class="card bg-light m-2">
+                <div class="card-body">
+                    <p class="card-title h4">{{theme.title}}</p>
+                    <p class="card-text">{{theme.description}}</p>
+                    <div class="text-center">
+                        <button href="#" class="btn btn-primary">S'abonner</button>
+                    </div>
+                    
+                </div>
+            </div>
+            </div>
+
+    </div>
 </div>
+
+
+

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -7,14 +6,18 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ThemesComponent } from './features/themes/themes/themes.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './features/auth/login/login.component';
+import { RegisterComponent } from './features/auth/register/register.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ArticlesComponent } from './features/articles/articles.component';
+import { ProfileComponent } from './features/profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ThemesComponent],
+  declarations: [AppComponent, HomeComponent, ThemesComponent, LoginComponent, RegisterComponent, NavbarComponent, ArticlesComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
     HttpClientModule
   ],
   providers: [],

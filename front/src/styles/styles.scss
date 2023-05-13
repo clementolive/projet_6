@@ -1,4 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+$body-color: #7D50DE;
+
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button{
+    margin-top: 1em;
+    background-color: $body-color !important;
+}
+
+input{
+    width:300;
+}
+
+ul {
+    list-style-type: none;
+}
+
