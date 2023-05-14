@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/interfaces/article.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-articles',
@@ -16,9 +17,16 @@ export class ArticlesComponent implements OnInit {
   createdAt: new Date()};
   public articles = [this.art1, this.art2, this.art3];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  goToDetail() {
+    this.router.navigate(['detailArticle']);
+  }
+  
+  //Sort articles by Date 
+  sort(){}
 
 }

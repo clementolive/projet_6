@@ -1,22 +1,30 @@
 <app-navbar></app-navbar>
 
-<button class="btn btn-primary m-2" routerLink="../createArticle">Créer un article</button>
+<div class="d-flex justify-content-between">
+    <button class="btn btn-primary m-2" routerLink="../createArticle">Créer un article</button>
+    <span class="d-flex">
+        <h2 class="m-2">Trier par</h2>
+        <svg (click)="sort()" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+         fill="currentColor" class="m-2 bi bi-arrow-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+             d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+        </svg>
+    </span>
+
+</div>
 
 <div class="row row-cols-2">
-
     <div *ngFor="let article of articles">
         <div class="col">
             <div class="card bg-light m-2">
                 <div class="card-body">
-                    <p class="card-title h4">{{article.title}}</p>
+                    <p class="card-title h4" (click)="goToDetail()">{{article.title}}</p>
                     <p class="card-text">{{article.description}}</p>
                     <div class="text-center">
-                        <button href="#" class="btn btn-primary">S'abonner</button>
+                        <button href="" class="btn btn-primary">S'abonner</button>
                     </div>
-                    
                 </div>
             </div>
-            </div>
-
+        </div>
     </div>
 </div>
