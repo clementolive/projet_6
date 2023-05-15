@@ -13,15 +13,14 @@ import { ArticlesComponent } from './features/articles/articles.component';
 import { ProfileComponent } from './features/profile/profile.component';
 import { CreateArticleComponent } from './features/create-article/create-article.component';
 import { DetailArticleComponent } from './features/detail-article/detail-article.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, ThemesComponent, LoginComponent, RegisterComponent, NavbarComponent, ArticlesComponent, ProfileComponent, CreateArticleComponent, DetailArticleComponent],
-  imports: [
-    BrowserModule,
+  imports: [BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
-  ],
+    HttpClientModule, ReactiveFormsModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

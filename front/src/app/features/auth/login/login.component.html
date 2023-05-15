@@ -4,18 +4,22 @@
     </a>
 </nav>
 
-<form class="form-signin d-flex align-items-center flex-column text-center mt-3">
+<form class="form-signin d-flex align-items-center flex-column text-center mt-3" [formGroup]="form" (ngSubmit)="submit()">
     <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
 
     <div class="col-4 align-self-center">
-        <label for="inputEmail">E-mail ou nom d'utilisateur</label>
-        <input type="text" id="inputEmail" class="form-control mb-3">
+        <div class="form-group">
+            <label for="inputEmail">E-mail ou nom d'utilisateur</label>
+            <input type="text" class="form-control mb-3" formControlName="email">
+        </div>
 
-        <label for="inputPassword">Mot de passe</label>
-        <input type="password" id="inputPassword" class="form-control">
+        <div class="form-group">
+            <label for="inputPassword">Mot de passe</label>
+            <input type="password" class="form-control" formControlName="password">
+        </div>
     </div>
    
-    <button class="btn btn-md btn-primary btn-block" type="submit">Se connecter</button>
+    <button class="btn btn-md btn-primary btn-block" type="submit" [disabled] = "form.invalid">Se connecter</button>
 </form>
 
 

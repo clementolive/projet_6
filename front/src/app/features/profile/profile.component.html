@@ -1,14 +1,15 @@
 <app-navbar></app-navbar>
 
-<form class="form-signin d-flex align-items-center flex-column text-center mt-3">
+<!-- Form to update username or email -->
+<form class="form-signin d-flex align-items-center flex-column text-center mt-3" [formGroup]="form" (ngSubmit)="submit()">
     <h1 class="h3 mb-3 font-weight-normal">Profil utilisateur</h1>
 
     <div class="col-4 align-self-center">
-        <input type="text" id="inputEmail" class="form-control mb-3" placeholder="Nom d'utilisateur">
-        <input type="password" id="inputPassword" class="form-control" placeholder="E-mail">
+        <input type="text" class="form-control mb-3" placeholder="Nom d'utilisateur" formControlName="username">
+        <input type="email"  class="form-control" placeholder="E-mail" formControlName="email">
     </div>
 
-    <button class="btn btn-md btn-primary btn-block" type="submit">Sauvegarder</button>
+    <button class="btn btn-md btn-primary btn-block" type="submit" [disabled] = "form.invalid">Sauvegarder</button>
 </form>
 <hr>
 <div class="d-flex align-items-center flex-column text-center mt-3">
@@ -16,9 +17,8 @@
 </div>
 
 
-
+<!-- Most of subsribed themes from API -->
 <div class="row row-cols-2">
-
     <div *ngFor="let theme of (themes$ | async)?.themes">
         <div class="col">
             <div class="card bg-light m-2">
@@ -28,10 +28,8 @@
                     <div class="text-center">
                         <button href="#" class="btn btn-primary">Se désabonner</button>
                     </div>
-                    
                 </div>
             </div>
-            </div>
-
+        </div>
     </div>
 </div>
