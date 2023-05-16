@@ -8,7 +8,7 @@ import { ThemesResponse } from '../interfaces/themesResponse.interface';
   providedIn: 'root'
 })
 export class ThemeService {
-  private pathService = 'api/themes';
+  private pathService = 'api/theme';
 
   constructor(private httpClient: HttpClient) { }
 

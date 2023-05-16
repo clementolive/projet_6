@@ -28,6 +28,7 @@ public class ThemesConfiguration {
                     " Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     new Date(), new Theme());
             List<Article> articleList = List.of(a1,a2);
+
             Theme t1 = new Theme(1, "SQL", "News about SQL language", articleList);
             a1.setTheme(t1);
             a2.setTheme(t1);

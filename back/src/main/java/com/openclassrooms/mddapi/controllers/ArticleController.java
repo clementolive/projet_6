@@ -19,5 +19,10 @@ public class ArticleController {
         return articleService.getById(id);
     }
 
+    @GetMapping("/api/article")
+    public Article[] findAll() {
+        return articleService.findAll();
+    }
+
 
 }
