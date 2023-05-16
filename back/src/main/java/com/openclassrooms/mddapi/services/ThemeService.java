@@ -11,11 +11,10 @@ public class ThemeService {
     @Autowired
     ThemeRepository themeRepository;
 
-    public ThemesResponse findAll(){
+    public Theme[] findAll(){
         ThemesResponse themesResponse = new ThemesResponse();
         Theme[] themeList = themeRepository.findAll().toArray(new Theme[0]);
-        themesResponse.setThemes(themeList);
-        return themesResponse;
+        return themeList;
     }
 
 }

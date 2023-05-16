@@ -1,6 +1,6 @@
 package com.openclassrooms.mddapi.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,23 +9,23 @@ import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Theme {
+public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer theme_id;
+    Integer id;
     String title;
     String description;
+    Date createdAt;
 
-    @JsonManagedReference
-    @OneToMany( mappedBy = "theme",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    List<Article> articleList;
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    Theme theme;
 
 }

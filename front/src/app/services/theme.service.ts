@@ -12,7 +12,7 @@ export class ThemeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public all(): Observable<ThemesResponse> {
-    return this.httpClient.get<ThemesResponse>(this.pathService);
+  public all(): Observable<Theme[]> {
+    return this.httpClient.get<Theme[]>(this.pathService);
   }
 }

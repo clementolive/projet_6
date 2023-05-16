@@ -10,7 +10,7 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./themes.component.scss']
 })
 export class ThemesComponent{
-  public themes$ = this.themeService.all()
+  public themes$ = this.themeService.all();
 
 
   constructor(private themeService: ThemeService){}
