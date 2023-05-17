@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+
+<form class="form-signin d-flex align-items-center flex-column text-center mt-3" [formGroup]="form" (ngSubmit)="submit()">
+    <h1 class="h3 mb-3 font-weight-normal">Créer un nouvel article</h1>
+
+    <div class="col-4 align-self-center">
+
+        <div class="form-group">
+            <label class="mb-2" for="exampleFormControlSelect1">Sélectionner un thème</label>
+            <select class="form-control mb-3" id="exampleFormControlSelect1" formControlName="theme">
+                <option *ngFor="let theme of themes$ | async" [ngValue]="theme">
+                    {{ theme.title }}
+                   </option>
+            </select>
+          </div>
+
+        <input type="text" id="inputTitle" class="form-control mb-3" placeholder="Titre de l'article" formControlName="title">
+
+        <textarea class="form-control" id="inputDescription" rows="10" placeholder="Contenu de l'article" formControlName="content">
+        </textarea>
+    </div>
+
+    <button class="btn btn-md btn-primary btn-block" type="submit" [disabled] = "form.invalid">Créer</button>
+</form>

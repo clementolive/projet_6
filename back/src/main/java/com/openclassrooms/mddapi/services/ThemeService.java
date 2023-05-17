@@ -5,6 +5,8 @@ import com.openclassrooms.mddapi.repositories.ThemeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ThemeService {
     @Autowired
@@ -13,6 +15,10 @@ public class ThemeService {
     public Theme[] findAll(){
         Theme[] themeList = themeRepository.findAll().toArray(new Theme[0]);
         return themeList;
+    }
+
+    public Theme findById(Integer id) {
+        return themeRepository.findById(Long.valueOf(id)).orElse(null);
     }
 
 }

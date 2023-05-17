@@ -13,6 +13,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent {
   public onError = false;
+  
   constructor(private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,

@@ -37,7 +37,6 @@ public class User {
 
     @NonNull
     @Size(max = 20)
-    @Column(name = "last_name")
     private String username;
 
     @NonNull
