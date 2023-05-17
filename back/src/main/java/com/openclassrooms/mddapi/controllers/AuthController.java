@@ -51,18 +51,10 @@ public class AuthController {
         String jwt = jwtUtils.generateJwtToken(authentication);
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-        boolean isAdmin = false;
-        User user = this.userRepository.findByEmail(userDetails.getUsername()).orElse(null);
-        if (user != null) {
-            isAdmin = user.isAdmin();
-        }
-
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getFirstName(),
-                userDetails.getLastName(),
-                isAdmin));
+                userDetails.getUsername()
+));
     }
 
     @PostMapping("/register")
@@ -76,8 +68,7 @@ public class AuthController {
         // Create new user's account
         User user = new User(signUpRequest.getEmail(),
                 signUpRequest.getUsername(),
-                passwordEncoder.encode(signUpRequest.getPassword()),
-                false);
+                passwordEncoder.encode(signUpRequest.getPassword()));
 
         userRepository.save(user);
 
