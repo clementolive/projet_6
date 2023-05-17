@@ -1,25 +1,61 @@
 package com.openclassrooms.mddapi.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.Accessors;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Date;
-
-@Data
 @Entity
-@AllArgsConstructor
+@Table(name = "USERS", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "email")
+})
+@Data
+
+@Accessors(chain = true)
+@EntityListeners(AuditingEntityListener.class)
+@EqualsAndHashCode(of = {"id"})
+
+@Builder
 @NoArgsConstructor
+@RequiredArgsConstructor
+@AllArgsConstructor
+@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
-    String username;
-    String email;
-    String password;
+    private Long id;
+
+    @NonNull
+    @Size(max = 50)
+    @Email
+    private String email;
+
+    @NonNull
+    @Size(max = 20)
+    @Column(name = "last_name")
+    private String username;
+
+    @NonNull
+    @Size(max = 120)
+    private String password;
+
+
+    //To delete
+
+    @NonNull
+    private boolean admin;
+
+    @CreatedDate
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
 }
