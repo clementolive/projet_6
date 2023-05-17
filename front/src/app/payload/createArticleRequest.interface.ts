@@ -1,5 +1,5 @@
 export interface CreateArticleRequest {
-    theme: number;
+    theme: string;
     title: string;
     content: string;
 }

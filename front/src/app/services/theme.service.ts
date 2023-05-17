@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Theme } from '../interfaces/theme.interface';
-import { ThemesResponse } from '../interfaces/themesResponse.interface';
+import { ThemesResponse } from '../payload/themesResponse.interface';
 
 @Injectable({
   providedIn: 'root'

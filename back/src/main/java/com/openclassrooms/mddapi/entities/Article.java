@@ -21,7 +21,7 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String title;
-    String description;
+    String content;
     Date createdAt;
 
     @JsonBackReference
