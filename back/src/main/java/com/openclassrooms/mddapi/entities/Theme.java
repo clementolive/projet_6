@@ -18,7 +18,7 @@ import java.util.List;
 public class Theme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer theme_id;
+    Long theme_id;
     String title;
     String description;
 

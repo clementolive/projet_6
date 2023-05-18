@@ -11,8 +11,8 @@ public class ArticleService {
     @Autowired
     ArticleRepository articleRepository;
 
-    public Article getById(Integer articleId){
-        return articleRepository.getReferenceById(Long.valueOf(articleId));
+    public Article getById(Long articleId){
+        return articleRepository.getReferenceById(articleId);
     }
 
     public Article[] findAll() {

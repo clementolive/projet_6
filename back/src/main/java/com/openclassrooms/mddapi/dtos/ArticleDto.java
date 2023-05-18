@@ -9,7 +9,7 @@ import lombok.*;
 @Generated
 @Setter
 public class ArticleDto {
-    Integer id;
+    Long id;
     String title;
     String content;
     String theme_name;

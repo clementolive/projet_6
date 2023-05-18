@@ -4,6 +4,8 @@ export interface Article {
     content: string;
     createdAt: Date;
 
-    //External key. An article is linked to one Theme. 
-    theme_id: number;
+    //External keys. An article is linked to one Theme. 
+    theme_name: string;
+    author_name: string; 
+    comments: Comment[]
 }

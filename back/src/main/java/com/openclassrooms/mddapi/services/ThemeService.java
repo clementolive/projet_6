@@ -17,8 +17,8 @@ public class ThemeService {
         return themeList;
     }
 
-    public Theme findById(Integer id) {
-        return themeRepository.findById(Long.valueOf(id)).orElse(null);
+    public Theme findById(Long id) {
+        return themeRepository.findById(id).orElse(null);
     }
 
     public Theme findByTitle(String title) {

@@ -11,4 +11,8 @@ public interface ArticleMapper {
     @Mapping(target="theme_name", expression="java(article.getTheme().getTitle())")
     @Mapping(target="author_name", expression="java(article.getUser().getUsername())")
     ArticleDto articleToArticleDto(Article article);
+
+    @Mapping(target="theme_name", expression="java(article.getTheme().getTitle())")
+    @Mapping(target="author_name", expression="java(article.getUser().getUsername())")
+    ArticleDto[] articleToArticleDto(Article[] article);
 }

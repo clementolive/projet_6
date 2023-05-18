@@ -1,8 +1,10 @@
 package com.openclassrooms.mddapi.controllers;
 
+import com.openclassrooms.mddapi.dtos.ArticleDto;
 import com.openclassrooms.mddapi.entities.Article;
 import com.openclassrooms.mddapi.entities.Theme;
 import com.openclassrooms.mddapi.entities.User;
+import com.openclassrooms.mddapi.mappers.ArticleMapper;
 import com.openclassrooms.mddapi.models.CreateArticleRequest;
 import com.openclassrooms.mddapi.security.services.UserDetailsServiceImpl;
 import com.openclassrooms.mddapi.services.ArticleService;
@@ -24,14 +26,20 @@ public class ArticleController {
     @Autowired
     UserDetailsServiceImpl userDetailsService;
 
+    @Autowired
+    ArticleMapper articleMapper;
+
     @GetMapping("/api/article/{id}")
-    public Article getArticle(@PathVariable("id") Integer id) {
-        return articleService.getById(id);
+    public ArticleDto getArticle(@PathVariable("id") Long id) {
+
+        Article article =  articleService.getById(id);
+        return articleMapper.articleToArticleDto(article);
     }
 
     @GetMapping("/api/article")
-    public Article[] findAll() {
-        return articleService.findAll();
+    public ArticleDto[] findAll() {
+        Article[] articles = articleService.findAll();
+        return articleMapper.articleToArticleDto(articles);
     }
 
     @PostMapping("/api/article")

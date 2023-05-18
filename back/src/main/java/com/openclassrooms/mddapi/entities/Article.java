@@ -21,7 +21,7 @@ import java.util.List;
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    Long id;
     @NotBlank
     String title;
     @NotBlank
@@ -35,10 +35,11 @@ public class Article {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     Theme theme;
 
+    @JsonBackReference
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     User user;
-
+    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     @OrderColumn
     Comment[] comments;
