@@ -21,4 +21,7 @@ public class ThemeService {
         return themeRepository.findById(Long.valueOf(id)).orElse(null);
     }
 
+    public Theme findByTitle(String title) {
+        return themeRepository.findByTitle(title).orElse(null);
+    }
 }

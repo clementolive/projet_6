@@ -22,8 +22,18 @@ public class UserDetailsImpl implements UserDetails {
 
     private String username;
 
+    private String email;
     @JsonIgnore
     private String password;
+
+    public UserDetailsImpl() {
+
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return new HashSet<GrantedAuthority>();

@@ -19,7 +19,14 @@ public class ThemeController {
     }
 
     @GetMapping("/api/theme/{id}")
-    public Theme getTheme(@PathVariable("id") Integer id){
+    public Theme getThemeById(@PathVariable("id") Integer id){
         return themeService.findById(id);
     }
+
+    @GetMapping("/api/theme/{title}")
+    public Theme getThemeByTitle(@PathVariable("title") String title){
+        return themeService.findByTitle(title);
+    }
+
+
 }

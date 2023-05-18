@@ -18,4 +18,8 @@ public class ArticleService {
     public Article[] findAll() {
         return articleRepository.findAll().toArray(new Article[0]);
     }
+
+    public void save(Article article) {
+        articleRepository.save(article);
+    }
 }
