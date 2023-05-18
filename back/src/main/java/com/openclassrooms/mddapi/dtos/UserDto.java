@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Generated
+@Setter
 public class UserDto {
     private Long id;
 

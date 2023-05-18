@@ -35,11 +35,13 @@ public class Article {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     Theme theme;
 
-    @JsonBackReference
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     User user;
 
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @OrderColumn
+    Comment[] comments;
 
     public Article(String title, String content, Theme theme, User user){
         this.title = title;
