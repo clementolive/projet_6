@@ -18,7 +18,7 @@ export class ArticleService {
   }
 
   public createArticle(request: CreateArticleRequest): void{
-    this.httpClient.post<void>(this.pathService, request);
+    this.httpClient.post<void>(this.pathService, request).subscribe();
     console.log("post article done");
   }
 }

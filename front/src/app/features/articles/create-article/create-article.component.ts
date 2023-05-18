@@ -10,17 +10,20 @@ import { ArticleService } from 'src/app/services/article.service';
   templateUrl: './create-article.component.html',
   styleUrls: ['./create-article.component.scss']
 })
-export class CreateArticleComponent{
+export class CreateArticleComponent implements OnInit{
 
   constructor(private fb: FormBuilder,
               private router: Router, 
               private themeService: ThemeService, 
               private articleService: ArticleService) {
   }
+  ngOnInit(): void {
+    
+  }
+
+  selectedTheme!: string;
 
   public themes$ = this.themeService.all();
-
-  public allThemes = [1,2,3];
 
   public form = this.fb.group({
    theme: [
@@ -43,7 +46,13 @@ export class CreateArticleComponent{
     ]
   });
 
-  submit(){
+  onSelected(value:string): void {
+		this.selectedTheme = value;
+	}
+
+
+  public submit(): void{
+    //const createArticleRequest = {title: this.form.value.title, theme: this.selectedTheme, content: this.form.value.content} as CreateArticleRequest;
     const createArticleRequest = this.form.value as CreateArticleRequest;
     this.articleService.createArticle(createArticleRequest);
     this.router.navigate(['articles']);

@@ -1,7 +1,7 @@
 export interface Article {
     id: number;
     title: string;
-    description: string;
+    content: string;
     createdAt: Date;
 
     //External key. An article is linked to one Theme. 
