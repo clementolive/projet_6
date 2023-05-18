@@ -1,15 +1,13 @@
 package com.openclassrooms.mddapi.controllers;
 
 import javax.validation.Valid;
-
 import com.openclassrooms.mddapi.entities.User;
-import com.openclassrooms.mddapi.models.LoginRequest;
-import com.openclassrooms.mddapi.models.SignupRequest;
+import com.openclassrooms.mddapi.models.requests.LoginRequest;
+import com.openclassrooms.mddapi.models.requests.SignupRequest;
 import com.openclassrooms.mddapi.models.response.JwtResponse;
 import com.openclassrooms.mddapi.models.response.MessageResponse;
 import com.openclassrooms.mddapi.repositories.UserRepository;
 import com.openclassrooms.mddapi.security.jwt.JwtUtils;
-import com.openclassrooms.mddapi.security.services.UserDetailsImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

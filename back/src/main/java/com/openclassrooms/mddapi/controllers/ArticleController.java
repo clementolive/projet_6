@@ -5,7 +5,7 @@ import com.openclassrooms.mddapi.entities.Article;
 import com.openclassrooms.mddapi.entities.Theme;
 import com.openclassrooms.mddapi.entities.User;
 import com.openclassrooms.mddapi.mappers.ArticleMapper;
-import com.openclassrooms.mddapi.models.CreateArticleRequest;
+import com.openclassrooms.mddapi.models.requests.CreateArticleRequest;
 import com.openclassrooms.mddapi.security.services.UserDetailsServiceImpl;
 import com.openclassrooms.mddapi.services.ArticleService;
 import com.openclassrooms.mddapi.services.ThemeService;

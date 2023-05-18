@@ -1,4 +1,4 @@
-package com.openclassrooms.mddapi.models;
+package com.openclassrooms.mddapi.models.requests;
 
 import lombok.Getter;
 
