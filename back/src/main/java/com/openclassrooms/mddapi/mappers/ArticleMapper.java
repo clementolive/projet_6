@@ -2,6 +2,7 @@ package com.openclassrooms.mddapi.mappers;
 
 import com.openclassrooms.mddapi.dtos.ArticleDto;
 import com.openclassrooms.mddapi.entities.Article;
+import com.openclassrooms.mddapi.entities.Comment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

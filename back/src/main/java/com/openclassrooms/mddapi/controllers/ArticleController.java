@@ -2,9 +2,11 @@ package com.openclassrooms.mddapi.controllers;
 
 import com.openclassrooms.mddapi.dtos.ArticleDto;
 import com.openclassrooms.mddapi.entities.Article;
+import com.openclassrooms.mddapi.entities.Comment;
 import com.openclassrooms.mddapi.entities.Theme;
 import com.openclassrooms.mddapi.entities.User;
 import com.openclassrooms.mddapi.mappers.ArticleMapper;
+import com.openclassrooms.mddapi.models.requests.CommentRequest;
 import com.openclassrooms.mddapi.models.requests.CreateArticleRequest;
 import com.openclassrooms.mddapi.models.response.MessageResponse;
 import com.openclassrooms.mddapi.security.services.UserDetailsServiceImpl;
@@ -14,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ArticleController {
@@ -56,6 +60,21 @@ public class ArticleController {
         articleService.save(article);
 
         return new MessageResponse("Article created");
+    }
+
+    @PostMapping("/api/article/{id}")
+    public MessageResponse commentArticle(@PathVariable("id") Long id, @RequestBody CommentRequest req) {
+
+        Article article =  articleService.getById(id);
+        Comment comment = new Comment();
+        comment.setContent(req.getContent());
+        article.getComments().add(comment);
+
+        //Comment[] test = article.getComments().toArray();
+
+        articleService.save(article);
+
+        return new MessageResponse("Comment added");
     }
 
 }

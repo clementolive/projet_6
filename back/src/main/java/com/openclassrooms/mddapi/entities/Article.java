@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -31,9 +32,9 @@ public class Article {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     User user;
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @OrderColumn
-    Comment[] comments;
+    List<Comment> comments;
 
     public Article(String title, String content, Theme theme, User user){
         this.title = title;

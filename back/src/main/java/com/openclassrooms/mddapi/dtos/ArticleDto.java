@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
