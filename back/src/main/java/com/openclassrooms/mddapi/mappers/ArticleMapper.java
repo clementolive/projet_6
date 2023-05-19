@@ -5,6 +5,7 @@ import com.openclassrooms.mddapi.entities.Article;
 import com.openclassrooms.mddapi.entities.Comment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Mapper(componentModel = "spring")
 public interface ArticleMapper {

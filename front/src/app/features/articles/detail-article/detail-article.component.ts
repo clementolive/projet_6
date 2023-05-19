@@ -10,14 +10,14 @@ import { ArticleService } from 'src/app/services/article.service';
   styleUrls: ['./detail-article.component.scss']
 })
 export class DetailArticleComponent implements OnInit {
-  article$!: Observable<Article>;
+  articleId = this.route.snapshot.params['id'];
+  article$ = this.articleService.getArticleById(this.articleId);
 
   constructor(private route: ActivatedRoute, 
     private articleService: ArticleService) { }
 
   ngOnInit(): void {
-    const articleId = this.route.snapshot.params['id'];
-    this.article$ = this.articleService.getArticleById(articleId);
+    
   }
 
   public back(): void {

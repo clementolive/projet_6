@@ -65,13 +65,19 @@ public class ArticleController {
     @PostMapping("/api/article/{id}")
     public MessageResponse commentArticle(@PathVariable("id") Long id, @RequestBody CommentRequest req) {
 
-        Article article =  articleService.getById(id);
+        // Create a comment from the request.
         Comment comment = new Comment();
         comment.setContent(req.getContent());
+
+        // Binding current user to comment
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        User user = (User) userDetailsService.loadUserByUsername(currentPrincipalName);
+        comment.setUser(user);
+
+        // Binding in Article
+        Article article =  articleService.getById(id);
         article.getComments().add(comment);
-
-        //Comment[] test = article.getComments().toArray();
-
         articleService.save(article);
 
         return new MessageResponse("Comment added");

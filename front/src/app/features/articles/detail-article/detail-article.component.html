@@ -1,63 +1,61 @@
 <app-navbar></app-navbar>
 
-<div class="card bg-light m-2">
-    <div class="card-body" *ngIf="article$ | async as article">
+<div *ngIf="article$ | async as article">
+    <div class="card bg-light m-2">
+        <div class="card-body" >
 
 
-        <span class="d-flex align-items-center">
-            <svg class="bi bi-arrow-left m-3" xmlns="http://www.w3.org/2000/svg" 
-            width="32" height="32" fill="currentColor" viewBox="0 0 16 16"
-            (click)="back()">
-                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-            </svg>
+            <span class="d-flex align-items-center">
+                <svg class="bi bi-arrow-left m-3" xmlns="http://www.w3.org/2000/svg" 
+                width="32" height="32" fill="currentColor" viewBox="0 0 16 16"
+                (click)="back()">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                </svg>
 
-            <p class="card-title h4">{{article.title}}</p>
+                <p class="card-title h4">{{article.title}}</p>
 
-        </span>
+            </span>
 
-        <span class="d-flex">
-            <p class="card-text m-3">{{article.createdAt | date: 'dd/MM/yyyy'}}</p>
-            <p class="card-text m-3">{{article.author_name}}</p>
-            <p class="card-text m-3">{{article.theme_name}}</p>
-        </span>
+            <span class="d-flex">
+                <p class="card-text m-3">{{article.createdAt | date: 'dd/MM/yyyy'}}</p>
+                <p class="card-text m-3">{{article.author_name}}</p>
+                <p class="card-text m-3">{{article.theme_name}}</p>
+            </span>
 
-        <p class="card-text">{{article.content}}</p>
+            <p class="card-text">{{article.content}}</p>
+        </div>
     </div>
-</div>
 
-<hr>
+    <hr>
 
-<h1 class="m-3">Commentaires</h1>
+    <h1 class="m-3">Commentaires</h1>
 
-<div class="card commentary bg-light m-2">
-    <div class="card-body">
-        <h3 class="card-title">Username</h3>
-        <p class="card-text">Contenu du commentaire</p>
-    </div>
-</div>
-<div class="card commentary bg-light m-2">
-    <div class="card-body">
-        <h3 class="card-title">Another user</h3>
-        <p class="card-text">Contenu du commentaire</p>
-    </div>
-</div>
-
-
-<form class="form-signin d-flex align-items-center flex-column text-center mt-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-10">
-                <textarea class="form-control" id="inputDescription" rows="5"
-                placeholder="Écrivez ici votre commentaire"></textarea>
-            </div>
-    
-            <div class="col-2">
-                <button class="btn btn-primary" type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
-                    </svg>
-                </button>
+    <div *ngFor="let oneComment of article.comments" >
+        <div class="card commentary bg-light m-2">
+            <div class="card-body"> 
+                <h3 class="card-title">{{ oneComment.author_name }}</h3>
+                <p class="card-text">{{ oneComment.content }}</p>
             </div>
         </div>
     </div>
-</form>
+</div>
+
+    <form class="form-signin d-flex align-items-center flex-column text-center mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-10">
+                    <textarea class="form-control" id="inputDescription" rows="5"
+                    placeholder="Écrivez ici votre commentaire"></textarea>
+                </div>
+        
+                <div class="col-2">
+                    <button class="btn btn-primary" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+

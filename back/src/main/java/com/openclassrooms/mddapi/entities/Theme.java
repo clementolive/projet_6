@@ -23,8 +23,7 @@ public class Theme {
     String description;
 
     @JsonManagedReference
-    @OneToMany( mappedBy = "theme",
-            cascade = CascadeType.ALL,
+    @OneToMany( mappedBy = "theme", fetch = FetchType.LAZY,
             orphanRemoval = true)
     List<Article> articleList;
 

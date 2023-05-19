@@ -7,5 +7,5 @@ export interface Article {
     //These are made by DTO layer. 
     theme_name: string;
     author_name: string; 
-    comments: Comment[]
+    comments: {author_name:string, content:string}[]; //Comment interface added manually because it wouldn't work 
 }

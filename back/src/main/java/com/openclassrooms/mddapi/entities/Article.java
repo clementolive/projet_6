@@ -1,6 +1,7 @@
 package com.openclassrooms.mddapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
@@ -27,11 +28,13 @@ public class Article {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     Theme theme;
-    @JsonBackReference
+
     @NotNull
+    @JsonBackReference // Important even in one-directional relationship (error otherwise)
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     User user;
-    @JsonBackReference
+
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @OrderColumn
     List<Comment> comments;
