@@ -1,7 +1,9 @@
 <app-navbar></app-navbar>
 
 <div class="card bg-light m-2">
-    <div class="card-body">
+    <div class="card-body" *ngIf="article$ | async as article">
+
+
         <span class="d-flex align-items-center">
             <svg class="bi bi-arrow-left m-3" xmlns="http://www.w3.org/2000/svg" 
             width="32" height="32" fill="currentColor" viewBox="0 0 16 16"
@@ -9,21 +11,17 @@
                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
             </svg>
 
-            <p class="card-title h4">Titre de l'article sélectionné</p>
+            <p class="card-title h4">{{article.title}}</p>
 
         </span>
 
         <span class="d-flex">
-            <p class="card-text m-3">Date</p>
-            <p class="card-text m-3">Auteur</p>
-            <p class="card-text m-3">Thème</p>
+            <p class="card-text m-3">{{article.createdAt | date: 'dd/MM/yyyy'}}</p>
+            <p class="card-text m-3">{{article.author_name}}</p>
+            <p class="card-text m-3">{{article.theme_name}}</p>
         </span>
 
-        <p class="card-text">Content: lorem ipsum is simply dummy text of the printing and 
-            typesetting industry. Lorem Ipsum has been the
-             industry's standard dummy text ever since the 1500s, 
-             when an unknown printer took a galley of type and scrambled it 
-             to make a type specimen book.</p>
+        <p class="card-text">{{article.content}}</p>
     </div>
 </div>
 

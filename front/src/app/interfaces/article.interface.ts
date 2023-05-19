@@ -4,7 +4,7 @@ export interface Article {
     content: string;
     createdAt: Date;
 
-    //External keys. An article is linked to one Theme. 
+    //These are made by DTO layer. 
     theme_name: string;
     author_name: string; 
     comments: Comment[]

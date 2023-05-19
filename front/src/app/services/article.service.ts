@@ -25,6 +25,6 @@ export class ArticleService {
   }
 
   public getArticleById(articleId: number): Observable<Article> {
-    return this.httpClient.get<Article>(this.pathService + "/" + articleId);
+    return this.httpClient.get<Article>(`${this.pathService}/${articleId}`);
   }
 }
