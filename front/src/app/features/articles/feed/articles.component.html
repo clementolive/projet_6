@@ -21,7 +21,7 @@
                     <p class="card-title h4" (click)="goToDetail(1)">{{article.title}}</p>
                     <span class="d-flex justify-content-between col-4 mb-3 m-1">
                         <div>{{article.createdAt | date: 'dd/MM/yyyy'}}</div>
-                        <div>Auteur</div>
+                        <div>{{article.author_name}}</div>
                     </span>
                     <p class="card-text">{{article.content}}</p>
                 </div>

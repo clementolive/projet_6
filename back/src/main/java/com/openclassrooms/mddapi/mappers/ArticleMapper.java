@@ -10,9 +10,11 @@ public interface ArticleMapper {
 
     @Mapping(target="theme_name", expression="java(article.getTheme().getTitle())")
     @Mapping(target="author_name", expression="java(article.getUser().getUsername())")
+    @Mapping(target="createdAt", expression="java(article.getCreatedAt())")
     ArticleDto articleToArticleDto(Article article);
 
     @Mapping(target="theme_name", expression="java(article.getTheme().getTitle())")
     @Mapping(target="author_name", expression="java(article.getUser().getUsername())")
+    @Mapping(target="createdAt", expression="java(article.getCreatedAt())")
     ArticleDto[] articleToArticleDto(Article[] article);
 }

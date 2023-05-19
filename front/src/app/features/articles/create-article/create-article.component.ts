@@ -52,7 +52,6 @@ export class CreateArticleComponent implements OnInit{
 
 
   public submit(): void{
-    //const createArticleRequest = {title: this.form.value.title, theme: this.selectedTheme, content: this.form.value.content} as CreateArticleRequest;
     const createArticleRequest = this.form.value as CreateArticleRequest;
     this.articleService.createArticle(createArticleRequest);
     this.router.navigate(['articles']);

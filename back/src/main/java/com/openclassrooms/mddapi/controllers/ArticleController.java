@@ -6,6 +6,7 @@ import com.openclassrooms.mddapi.entities.Theme;
 import com.openclassrooms.mddapi.entities.User;
 import com.openclassrooms.mddapi.mappers.ArticleMapper;
 import com.openclassrooms.mddapi.models.requests.CreateArticleRequest;
+import com.openclassrooms.mddapi.models.response.MessageResponse;
 import com.openclassrooms.mddapi.security.services.UserDetailsServiceImpl;
 import com.openclassrooms.mddapi.services.ArticleService;
 import com.openclassrooms.mddapi.services.ThemeService;
@@ -44,7 +45,7 @@ public class ArticleController {
 
     @PostMapping("/api/article")
     /** A new articles needs an author (user) and an associated Theme) */
-    public void createArticle(@RequestBody CreateArticleRequest req){
+    public MessageResponse createArticle(@RequestBody CreateArticleRequest req){
         Theme theme = themeService.findByTitle(req.getTheme());
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -53,6 +54,8 @@ public class ArticleController {
 
         Article article = new Article(req.getTitle(), req.getContent(), theme, user);
         articleService.save(article);
+
+        return new MessageResponse("Article created");
     }
 
 }
