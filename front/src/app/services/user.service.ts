@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UpdateUserRequest } from '../payload/request/updateUserRequest.interface';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,16 @@ import { UpdateUserRequest } from '../payload/request/updateUserRequest.interfac
 export class UserService {
 
   private pathService = 'api/user';
+  userId = this.sessionService.sessionInformation!.id;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, 
+    private sessionService: SessionService) { }
 
-  public updateUser(userId: number, updateUserRequest: UpdateUserRequest): void {
-    this.httpClient.put<void>(this.pathService + "/" + userId, updateUserRequest).subscribe();
+  public updateUser(updateUserRequest: UpdateUserRequest): void {
+    this.httpClient.put<void>(this.pathService + "/" + this.userId, updateUserRequest).subscribe();
+  }
+
+  public unsubscribe(themeId: number): void {
+    this.httpClient.post<void>(this.pathService + "/" + this.userId + "/unsubscribe/" + themeId, {}).subscribe();
   }
 }

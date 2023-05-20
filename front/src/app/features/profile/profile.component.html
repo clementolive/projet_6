@@ -17,16 +17,18 @@
     <h1 class="h3 mb-3 font-weight-normal">Abonnements</h1>
 </div>
 
-<!-- Most of subsribed themes from API -->
+<!-- List of subscribed themes from API -->
 <div class="row row-cols-2">
     <div *ngFor="let theme of (themes$ | async)">
-        <div class="col">
-            <div class="card bg-light m-2">
-                <div class="card-body">
-                    <p class="card-title h4">{{theme.title}}</p>
-                    <p class="card-text">{{theme.description}}</p>
-                    <div class="text-center">
-                        <button href="#" class="btn btn-primary">Se désabonner</button>
+        <div *ngIf="theme">
+            <div class="col">
+                <div class="card bg-light m-2">
+                    <div class="card-body">
+                        <p class="card-title h4">{{theme.title}}</p>
+                        <p class="card-text">{{theme.description}}</p>
+                        <div class="text-center">
+                            <button class="btn btn-primary" (click)="unsubscribe(theme.theme_id)">Se désabonner</button>
+                        </div>
                     </div>
                 </div>
             </div>

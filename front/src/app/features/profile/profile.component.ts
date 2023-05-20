@@ -17,8 +17,7 @@ export class ProfileComponent  {
   constructor(private fb: FormBuilder,
     private router: Router, 
     private themeService: ThemeService, 
-    private userService: UserService, 
-    private sessionService: SessionService) {}
+    private userService: UserService) {}
 
     public form = this.fb.group({
       username: [
@@ -37,11 +36,20 @@ export class ProfileComponent  {
       ]
     });
 
+    reloadCurrentRoute() {
+      let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([currentUrl]);
+      });
+    }
+
     submit() {
       const updateUserRequest = this.form.value as UpdateUserRequest;
-    
-      this.userService.updateUser(this.sessionService.sessionInformation!.id,
-        updateUserRequest);
+      this.userService.updateUser(updateUserRequest);
+    }
 
+    unsubscribe(themeId:number){
+        this.userService.unsubscribe(themeId);
+        this.reloadCurrentRoute();
     }
 }

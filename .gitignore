@@ -115,3 +115,4 @@
 .idea/libraries/Maven__org_springframework_security_spring_security_crypto_5_7_3.xml
 .idea/libraries/Maven__org_springframework_security_spring_security_web_5_7_3.xml
 /.idea/libraries/Maven__org_projectlombok_lombok_1_18_26.xml
+.idea/libraries/Maven__org_projectlombok_lombok_mapstruct_binding_0_2_0.xml

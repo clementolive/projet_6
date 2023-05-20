@@ -48,4 +48,14 @@ public class UserController {
 
         return new MessageResponse("Subscribed to new theme");
     }
+
+    @PostMapping("/api/user/{id}/unsubscribe/{theme_id}")
+    public MessageResponse unsubscribeToTheme(@PathVariable("id") Long id, @PathVariable("theme_id") Long theme_id){
+        User user = userService.findById(id);
+        Theme theme = themeController.getThemeById(theme_id);
+        user.getThemeList().remove(theme);
+        userService.save(user);
+
+        return new MessageResponse("Unsubscribed to theme");
+    }
 }
