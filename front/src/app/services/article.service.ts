@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Theme } from '../interfaces/theme.interface';
 import { Article } from '../interfaces/article.interface';
 import { CreateArticleRequest } from '../payload/request/createArticleRequest.interface';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,17 @@ import { CreateArticleRequest } from '../payload/request/createArticleRequest.in
 export class ArticleService {
 
   private pathService = 'api/article';
+  userId = this.sessionService.sessionInformation!.id;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, 
+    private sessionService: SessionService) { }
 
-  //Subscribed in HTML (async)
   public all(): Observable<Article[]> {
     return this.httpClient.get<Article[]>(this.pathService);
+  }
+
+  public all_subscribed(): Observable<Article[]> {
+    return this.httpClient.get<Article[]>("api/user/subscribedArticles/" + this.userId);
   }
 
   public createArticle(request: CreateArticleRequest): void{

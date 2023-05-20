@@ -7,6 +7,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public abstract class ArticleMapper {
 
@@ -27,7 +29,7 @@ public abstract class ArticleMapper {
     @Mapping(target="author_name", expression="java(article.getUser().getUsername())")
     @Mapping(target="createdAt", expression="java(article.getCreatedAt())")
     @Mapping(target="comments", expression="java(commentMapper.commentToCommentDtoArray(article.getComments()))")
-    public abstract ArticleDto[] articleToArticleDto(Article[] article);
+    public abstract List<ArticleDto> articleToArticleDto(List<Article> article);
 
     public void fun(){}
 }

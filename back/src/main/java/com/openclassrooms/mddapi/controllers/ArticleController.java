@@ -46,18 +46,12 @@ public class ArticleController {
     @GetMapping("/api/article/{id}")
     public ArticleDto getArticle(@PathVariable("id") Long id) {
         Article article =  articleService.getById(id);
-
-        ArticleDto articleDto = articleMapper.articleToArticleDto(article);
-
-        //List<CommentDto> commentDtos = commentMapper.commentToCommentDtoArray(article.getComments());
-        //articleDto.setComments(commentDtos);
-
-        return articleDto;
+        return articleMapper.articleToArticleDto(article);
     }
 
     @GetMapping("/api/article")
-    public ArticleDto[] findAll() {
-        Article[] articles = articleService.findAll();
+    public List<ArticleDto> findAll() {
+        List<Article> articles = articleService.findAll();
         return articleMapper.articleToArticleDto(articles);
     }
 

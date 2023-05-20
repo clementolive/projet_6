@@ -5,6 +5,8 @@ import com.openclassrooms.mddapi.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ArticleService {
 
@@ -15,8 +17,8 @@ public class ArticleService {
         return articleRepository.getReferenceById(articleId);
     }
 
-    public Article[] findAll() {
-        return articleRepository.findAll().toArray(new Article[0]);
+    public List<Article> findAll() {
+        return articleRepository.findAll();
     }
 
     public void save(Article article) {

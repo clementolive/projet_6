@@ -45,7 +45,10 @@ public class User implements UserDetails {
     private String password;
 
     @ManyToMany
-    @JoinTable (name = "User_Theme_Association")
+    @JoinTable (name = "User_Theme_Association", joinColumns = {
+            @JoinColumn(name = "id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "theme_id", referencedColumnName = "theme_id")}, uniqueConstraints = @UniqueConstraint(columnNames = {
+            "id", "theme_id" }))
     List<Theme> themeList;
 
     public User(String email, String username, String encode) {

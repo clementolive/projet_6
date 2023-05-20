@@ -12,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Generated
-@Setter
 public class ArticleDto {
     Long id;
     String title;
