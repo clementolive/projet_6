@@ -21,7 +21,7 @@ public class Comment {
     @CreationTimestamp
     Date createdAt;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
     User user;
 

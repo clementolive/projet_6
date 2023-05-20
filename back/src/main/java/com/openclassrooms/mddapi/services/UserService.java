@@ -15,7 +15,15 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElse(null);
+    }
+
     public void save(User user) {
         userRepository.save(user);
+    }
+
+    public User findByEmail(String currentPrincipalName) {
+        return userRepository.findByEmail(currentPrincipalName).orElse(null);
     }
 }

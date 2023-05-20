@@ -1,17 +1,21 @@
 package com.openclassrooms.mddapi.controllers;
 
 import com.openclassrooms.mddapi.dtos.ArticleDto;
+import com.openclassrooms.mddapi.dtos.CommentDto;
 import com.openclassrooms.mddapi.entities.Article;
 import com.openclassrooms.mddapi.entities.Comment;
 import com.openclassrooms.mddapi.entities.Theme;
 import com.openclassrooms.mddapi.entities.User;
 import com.openclassrooms.mddapi.mappers.ArticleMapper;
+import com.openclassrooms.mddapi.mappers.CommentMapper;
 import com.openclassrooms.mddapi.models.requests.CommentRequest;
 import com.openclassrooms.mddapi.models.requests.CreateArticleRequest;
 import com.openclassrooms.mddapi.models.response.MessageResponse;
 import com.openclassrooms.mddapi.security.services.UserDetailsServiceImpl;
 import com.openclassrooms.mddapi.services.ArticleService;
 import com.openclassrooms.mddapi.services.ThemeService;
+import com.openclassrooms.mddapi.services.UserService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,6 +28,8 @@ public class ArticleController {
 
     @Autowired
     ArticleService articleService;
+    @Autowired
+    CommentMapper commentMapper;
 
     @Autowired
     ThemeService themeService;
@@ -32,13 +38,21 @@ public class ArticleController {
     UserDetailsServiceImpl userDetailsService;
 
     @Autowired
+    UserService userService;
+
+    @Autowired
     ArticleMapper articleMapper;
 
     @GetMapping("/api/article/{id}")
     public ArticleDto getArticle(@PathVariable("id") Long id) {
-
         Article article =  articleService.getById(id);
-        return articleMapper.articleToArticleDto(article);
+
+        ArticleDto articleDto = articleMapper.articleToArticleDto(article);
+
+        //List<CommentDto> commentDtos = commentMapper.commentToCommentDtoArray(article.getComments());
+        //articleDto.setComments(commentDtos);
+
+        return articleDto;
     }
 
     @GetMapping("/api/article")
@@ -54,6 +68,8 @@ public class ArticleController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
+        System.out.println(currentPrincipalName);
+
         User user = (User) userDetailsService.loadUserByUsername(currentPrincipalName);
 
         Article article = new Article(req.getTitle(), req.getContent(), theme, user);
@@ -72,7 +88,9 @@ public class ArticleController {
         // Binding current user to comment
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
-        User user = (User) userDetailsService.loadUserByUsername(currentPrincipalName);
+        System.out.println(currentPrincipalName);
+        //User user = (User) userDetailsService.loadUserByUsername(currentPrincipalName);
+        User user = userService.findByEmail(currentPrincipalName);
         comment.setUser(user);
 
         // Binding in Article

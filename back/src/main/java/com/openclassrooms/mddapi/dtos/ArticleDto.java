@@ -20,6 +20,6 @@ public class ArticleDto {
     String theme_name;
     String author_name;
     Date createdAt;
-    Comment[] comments;
+    List<CommentDto> comments;
 
 }
