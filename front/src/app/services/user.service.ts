@@ -19,7 +19,13 @@ export class UserService {
     this.httpClient.put<void>(this.pathService + "/" + this.userId, updateUserRequest).subscribe();
   }
 
+  public subscribe(themeId: number): void {
+    this.httpClient.post<void>(this.pathService + "/" + this.userId + "/subscribe/" + themeId, {}).subscribe();
+  }
+
   public unsubscribe(themeId: number): void {
     this.httpClient.post<void>(this.pathService + "/" + this.userId + "/unsubscribe/" + themeId, {}).subscribe();
   }
+
+
 }
