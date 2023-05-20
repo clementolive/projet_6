@@ -36,9 +36,17 @@ export class DetailArticleComponent {
     window.history.back();
   }
 
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+}
+
   public submit(): void{
     const createCommentRequest = this.form.value as CreateCommentRequest;
     this.commentService.postComment(this.articleId, createCommentRequest);
+    this.reloadCurrentRoute();
   }
 
 }
