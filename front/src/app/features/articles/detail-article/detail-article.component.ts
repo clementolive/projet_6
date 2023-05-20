@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Article } from 'src/app/interfaces/article.interface';
-import { CreateCommentRequest } from 'src/app/payload/createCommentRequest.interface';
+import { CreateCommentRequest } from 'src/app/payload/request/createCommentRequest.interface';
 import { ArticleService } from 'src/app/services/article.service';
 import { CommentService } from 'src/app/services/comment.service';
 

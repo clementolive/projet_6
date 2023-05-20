@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Theme } from '../interfaces/theme.interface';
 import { Article } from '../interfaces/article.interface';
-import { CreateArticleRequest } from '../payload/createArticleRequest.interface';
+import { CreateArticleRequest } from '../payload/request/createArticleRequest.interface';
 
 @Injectable({
   providedIn: 'root'

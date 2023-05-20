@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ThemeService } from 'src/app/services/theme.service';
-import { CreateArticleRequest } from '../../../payload/createArticleRequest.interface';
+import { CreateArticleRequest } from '../../../payload/request/createArticleRequest.interface';
 import { ArticleService } from 'src/app/services/article.service';
 
 @Component({

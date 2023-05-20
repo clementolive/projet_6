@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UpdateUserRequest } from 'src/app/payload/updateUserRequest.interface';
+import { UpdateUserRequest } from 'src/app/payload/request/updateUserRequest.interface';
 import { SessionService } from 'src/app/services/session.service';
 import { ThemeService } from 'src/app/services/theme.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent  {
-  public themes$ = this.themeService.all()
+  public themes$ = this.themeService.subscribed_themes();
 
   constructor(private fb: FormBuilder,
     private router: Router, 

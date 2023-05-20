@@ -13,6 +13,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "USERS", uniqueConstraints = {
@@ -42,6 +43,10 @@ public class User implements UserDetails {
 
     @Size(max = 120)
     private String password;
+
+    @ManyToMany
+    @JoinTable (name = "User_Theme_Association")
+    List<Theme> themeList;
 
     public User(String email, String username, String encode) {
         this.email =   email;
