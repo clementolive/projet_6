@@ -5,9 +5,9 @@ import lombok.Generated;
 
 @Data
 @Generated
-public class ThemeDto {
+public class TopicDto {
 
-    Long theme_id;
+    Long topic_id;
     String title;
     String description;
     boolean subscribed;

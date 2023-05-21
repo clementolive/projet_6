@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Article {
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -26,7 +26,7 @@ public class Article {
     @JsonBackReference
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-    Theme theme;
+    Topic topic;
 
     @NotNull
     @JsonBackReference // Important even in one-directional relationship (error otherwise)
@@ -38,10 +38,10 @@ public class Article {
     @OrderColumn
     List<Comment> comments;
 
-    public Article(String title, String content, Theme theme, User user){
+    public Post(String title, String content, Topic topic, User user){
         this.title = title;
         this.content = content;
-        this.theme = theme;
+        this.topic = topic;
         this.user = user;
         this.createdAt = new Date();
     }

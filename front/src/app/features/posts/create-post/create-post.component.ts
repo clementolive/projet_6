@@ -49,7 +49,7 @@ export class CreatePostComponent{
   public submit(): void{
     const createpostRequest = this.form.value as CreatePostRequest;
     this.postService.createPost(createpostRequest);
-    this.router.navigate(['posts']);
+    this.router.navigate(['feed']);
   }
 
 }

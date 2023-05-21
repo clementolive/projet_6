@@ -3,8 +3,8 @@ package com.openclassrooms.mddapi.models.requests;
 import lombok.Getter;
 
 @Getter
-public class CreateArticleRequest {
-    String theme;
+public class CreatePostRequest {
+    String topic;
     String title;
     String content;
 }

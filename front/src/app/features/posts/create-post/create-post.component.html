@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <form class="form-signin d-flex align-items-center flex-column text-center mt-3" [formGroup]="form" (ngSubmit)="submit()">
-    <h1 class="h3 mb-3 font-weight-normal">Créer un nouvel article</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Créer un nouvel post</h1>
 
     <div class="col-4 align-self-center">
 
@@ -13,9 +13,9 @@
             </select>
           </div>
 
-        <input type="text" id="inputTitle" class="form-control mb-3" placeholder="Titre de l'article" formControlName="title">
+        <input type="text" id="inputTitle" class="form-control mb-3" placeholder="Titre de l'post" formControlName="title">
 
-        <textarea class="form-control" id="inputDescription" rows="10" placeholder="Contenu de l'article" formControlName="content">
+        <textarea class="form-control" id="inputDescription" rows="10" placeholder="Contenu de l'post" formControlName="content">
         </textarea>
     </div>
 

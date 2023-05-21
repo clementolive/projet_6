@@ -1,18 +1,18 @@
 package com.openclassrooms.mddapi.controllers;
 
-import com.openclassrooms.mddapi.dtos.ArticleDto;
-import com.openclassrooms.mddapi.entities.Article;
+import com.openclassrooms.mddapi.dtos.PostDto;
+import com.openclassrooms.mddapi.entities.Post;
 import com.openclassrooms.mddapi.entities.Comment;
-import com.openclassrooms.mddapi.entities.Theme;
+import com.openclassrooms.mddapi.entities.Topic;
 import com.openclassrooms.mddapi.entities.User;
-import com.openclassrooms.mddapi.mappers.ArticleMapper;
+import com.openclassrooms.mddapi.mappers.PostMapper;
 import com.openclassrooms.mddapi.mappers.CommentMapper;
 import com.openclassrooms.mddapi.models.requests.CommentRequest;
-import com.openclassrooms.mddapi.models.requests.CreateArticleRequest;
+import com.openclassrooms.mddapi.models.requests.CreatePostRequest;
 import com.openclassrooms.mddapi.models.response.MessageResponse;
 import com.openclassrooms.mddapi.security.services.UserDetailsServiceImpl;
-import com.openclassrooms.mddapi.services.ArticleService;
-import com.openclassrooms.mddapi.services.ThemeService;
+import com.openclassrooms.mddapi.services.PostService;
+import com.openclassrooms.mddapi.services.TopicService;
 import com.openclassrooms.mddapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,15 +21,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ArticleController {
+public class PostController {
 
     @Autowired
-    ArticleService articleService;
+    PostService postService;
     @Autowired
     CommentMapper commentMapper;
 
     @Autowired
-    ThemeService themeService;
+    TopicService topicService;
 
     @Autowired
     UserDetailsServiceImpl userDetailsService;
@@ -38,24 +38,24 @@ public class ArticleController {
     UserService userService;
 
     @Autowired
-    ArticleMapper articleMapper;
+    PostMapper postMapper;
 
-    @GetMapping("/api/article/{id}")
-    public ArticleDto getArticle(@PathVariable("id") Long id) {
-        Article article =  articleService.getById(id);
-        return articleMapper.articleToArticleDto(article);
+    @GetMapping("/api/post/{id}")
+    public PostDto getPost(@PathVariable("id") Long id) {
+        Post post =  postService.getById(id);
+        return postMapper.postToPostDto(post);
     }
 
-    @GetMapping("/api/article")
-    public List<ArticleDto> findAll() {
-        List<Article> articles = articleService.findAll();
-        return articleMapper.articleToArticleDto(articles);
+    @GetMapping("/api/post")
+    public List<PostDto> findAll() {
+        List<Post> posts = postService.findAll();
+        return postMapper.postToPostDto(posts);
     }
 
-    @PostMapping("/api/article")
-    /** A new articles needs an author (user) and an associated Theme */
-    public MessageResponse createArticle(@RequestBody CreateArticleRequest req){
-        Theme theme = themeService.findByTitle(req.getTheme());
+    @PostMapping("/api/post")
+    /** A new articles needs an author (user) and an associated Topic */
+    public MessageResponse createPost(@RequestBody CreatePostRequest req){
+        Topic topic = topicService.findByTitle(req.getTopic());
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
@@ -63,14 +63,14 @@ public class ArticleController {
 
         User user = (User) userDetailsService.loadUserByUsername(currentPrincipalName);
 
-        Article article = new Article(req.getTitle(), req.getContent(), theme, user);
-        articleService.save(article);
+        Post post = new Post(req.getTitle(), req.getContent(), topic, user);
+        postService.save(post);
 
-        return new MessageResponse("Article created");
+        return new MessageResponse("Post created");
     }
 
-    @PostMapping("/api/article/{id}")
-    public MessageResponse commentArticle(@PathVariable("id") Long id, @RequestBody CommentRequest req) {
+    @PostMapping("/api/post/{id}")
+    public MessageResponse commentPost(@PathVariable("id") Long id, @RequestBody CommentRequest req) {
 
         // Create a comment from the request.
         Comment comment = new Comment();
@@ -80,14 +80,14 @@ public class ArticleController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         System.out.println(currentPrincipalName);
-        //User user = (User) userDetailsService.loadUserByUsername(currentPrincipalName);
+
         User user = userService.findByEmail(currentPrincipalName);
         comment.setUser(user);
 
-        // Binding in Article
-        Article article =  articleService.getById(id);
-        article.getComments().add(comment);
-        articleService.save(article);
+        // Binding in Post
+        Post post =  postService.getById(id);
+        post.getComments().add(comment);
+        postService.save(post);
 
         return new MessageResponse("Comment added");
     }

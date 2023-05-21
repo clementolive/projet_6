@@ -1,9 +1,9 @@
 package com.openclassrooms.mddapi.repositories;
 
-import com.openclassrooms.mddapi.entities.Article;
+import com.openclassrooms.mddapi.entities.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ArticleRepository extends JpaRepository<Article, Long> {
+public interface PostRepository extends JpaRepository<Post, Long> {
 }

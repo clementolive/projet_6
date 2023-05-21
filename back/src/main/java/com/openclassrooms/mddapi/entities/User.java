@@ -41,11 +41,11 @@ public class User implements UserDetails {
     private String password;
 
     @ManyToMany
-    @JoinTable (name = "User_Theme_Association", joinColumns = {
+    @JoinTable (name = "User_Topic_Association", joinColumns = {
             @JoinColumn(name = "id", referencedColumnName = "id")}, inverseJoinColumns = {
-            @JoinColumn(name = "theme_id", referencedColumnName = "theme_id")}, uniqueConstraints = @UniqueConstraint(columnNames = {
-            "id", "theme_id" }))
-    List<Theme> themeList;
+            @JoinColumn(name = "topic_id", referencedColumnName = "topic_id")}, uniqueConstraints = @UniqueConstraint(columnNames = {
+            "id", "topic_id" }))
+    List<Topic> topicList;
 
     public User(String email, String username, String encode) {
         this.email =   email;

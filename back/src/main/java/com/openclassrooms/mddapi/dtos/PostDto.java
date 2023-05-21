@@ -8,11 +8,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Generated
-public class ArticleDto {
+public class PostDto {
     Long id;
     String title;
     String content;
-    String theme_name;
+    String topic_name;
     String author_name;
     Date createdAt;
     List<CommentDto> comments;

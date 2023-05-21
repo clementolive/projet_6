@@ -11,16 +11,16 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Theme {
+public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long theme_id;
+    Long topic_id;
     String title;
     String description;
 
     @JsonManagedReference
-    @OneToMany( mappedBy = "theme", fetch = FetchType.LAZY,
+    @OneToMany( mappedBy = "topic", fetch = FetchType.LAZY,
             orphanRemoval = true)
-    List<Article> articleList;
+    List<Post> postList;
 
 }
