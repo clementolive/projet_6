@@ -1,7 +1,6 @@
 package com.openclassrooms.mddapi.controllers;
 
 import com.openclassrooms.mddapi.dtos.ArticleDto;
-import com.openclassrooms.mddapi.dtos.CommentDto;
 import com.openclassrooms.mddapi.entities.Article;
 import com.openclassrooms.mddapi.entities.Comment;
 import com.openclassrooms.mddapi.entities.Theme;
@@ -15,12 +14,10 @@ import com.openclassrooms.mddapi.security.services.UserDetailsServiceImpl;
 import com.openclassrooms.mddapi.services.ArticleService;
 import com.openclassrooms.mddapi.services.ThemeService;
 import com.openclassrooms.mddapi.services.UserService;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -56,7 +53,7 @@ public class ArticleController {
     }
 
     @PostMapping("/api/article")
-    /** A new articles needs an author (user) and an associated Theme) */
+    /** A new articles needs an author (user) and an associated Theme */
     public MessageResponse createArticle(@RequestBody CreateArticleRequest req){
         Theme theme = themeService.findByTitle(req.getTheme());
 

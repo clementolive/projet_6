@@ -1,9 +1,7 @@
 package com.openclassrooms.mddapi.security.jwt;
 
 import java.util.Date;
-
 import com.openclassrooms.mddapi.entities.User;
-import com.openclassrooms.mddapi.security.services.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
