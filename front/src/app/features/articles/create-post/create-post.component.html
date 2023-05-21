@@ -7,9 +7,9 @@
 
         <div class="form-group">
             <label class="mb-2" for="exampleFormControlSelect1">Sélectionner un thème</label>
-            <select class="form-control mb-3" id="exampleFormControlSelect1" formControlName="theme">
-                <option *ngFor="let theme of (themes$ | async)" [ngValue]="theme.title">
-                    {{theme.title}}</option>
+            <select class="form-control mb-3" id="exampleFormControlSelect1" formControlName="topic">
+                <option *ngFor="let topic of (topics$ | async)" [ngValue]="topic.title">
+                    {{topic.title}}</option>
             </select>
           </div>
 

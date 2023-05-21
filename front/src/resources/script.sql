@@ -3,7 +3,7 @@
 INSERT INTO `users` (`id`, `email`, `password`, `username`) VALUES
  ('1', 'test@test.com', '$2a$10$12IuD/6d/lFM/zqJ.BXiP.bFp2AHfKy1QNV8ZlKf/8OlFaLejrTZ2', 'test');
 
--- New themes
+-- New topics
 INSERT INTO `theme` (`theme_id`, `description`, `title`) VALUES ('1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'SQL news ');
 
@@ -13,4 +13,4 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 INSERT INTO `theme` (`theme_id`, `description`, `title`) VALUES ('3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'CSS news ');
 
--- From here, user should be able to create articles, subscribe to Themes, update profile and comment articles. 
+-- From here, user should be able to create posts, subscribe to topics, update profile and comment posts. 

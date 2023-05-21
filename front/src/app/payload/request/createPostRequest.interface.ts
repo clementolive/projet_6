@@ -1,4 +1,4 @@
-export interface CreateArticleRequest {
+export interface CreatePostRequest {
     theme: string;
     title: string;
     content: string;

@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UpdateUserRequest } from 'src/app/payload/request/updateUserRequest.interface';
 import { SessionService } from 'src/app/services/session.service';
-import { ThemeService } from 'src/app/services/theme.service';
+import { TopicService } from 'src/app/services/topic.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,11 +12,11 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent  {
-  public themes$ = this.themeService.subscribed_themes();
+  public topics$ = this.topicService.subscribedTopics();
 
   constructor(private fb: FormBuilder,
     private router: Router, 
-    private themeService: ThemeService, 
+    private topicService: TopicService, 
     private userService: UserService) {}
 
     public form = this.fb.group({
@@ -48,8 +48,8 @@ export class ProfileComponent  {
       this.userService.updateUser(updateUserRequest);
     }
 
-    unsubscribe(themeId:number){
-        this.userService.unsubscribe(themeId);
+    unsubscribe(topicId:number){
+        this.userService.unsubscribe(topicId);
         this.reloadCurrentRoute();
     }
 }

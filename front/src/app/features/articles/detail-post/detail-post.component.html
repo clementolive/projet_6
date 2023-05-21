@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div *ngIf="article$ | async as article">
+<div *ngIf="post$ | async as post">
     <div class="card bg-light m-2">
         <div class="card-body" >
 
@@ -10,23 +10,23 @@
                 (click)="back()">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                 </svg>
-                <p class="card-title h4">{{article.title}}</p>
+                <p class="card-title h4">{{post.title}}</p>
             </span>
 
             <span class="d-flex">
-                <p class="card-text m-3">{{article.createdAt | date: 'dd/MM/yyyy'}}</p>
-                <p class="card-text m-3">{{article.author_name}}</p>
-                <p class="card-text m-3">{{article.theme_name}}</p>
+                <p class="card-text m-3">{{post.createdAt | date: 'dd/MM/yyyy'}}</p>
+                <p class="card-text m-3">{{post.author_name}}</p>
+                <p class="card-text m-3">{{post.theme_name}}</p>
             </span>
 
-            <p class="card-text">{{article.content}}</p>
+            <p class="card-text">{{post.content}}</p>
         </div>
     </div>
 
     <hr>
 
     <h1 class="m-3">Commentaires</h1>
-    <div *ngFor="let oneComment of article.comments" >
+    <div *ngFor="let oneComment of post.comments" >
         <div *ngIf="oneComment">
             <div class="card commentary bg-light m-2">
                 <div class="card-body"> 

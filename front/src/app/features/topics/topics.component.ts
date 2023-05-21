@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ThemeService } from 'src/app/services/theme.service';
+import { TopicService } from 'src/app/services/topic.service';
 import { UserService } from 'src/app/services/user.service';
 @Component({
-  selector: 'app-themes',
-  templateUrl: './themes.component.html',
-  styleUrls: ['./themes.component.scss']
+  selector: 'app-topics',
+  templateUrl: './topics.component.html',
+  styleUrls: ['./topics.component.scss']
 })
-export class ThemesComponent{
-  public themes$ = this.themeService.all();
+export class TopicsComponent{
+  public topics$ = this.topicService.all();
 
-  constructor(private themeService: ThemeService,
+  constructor(private topicService: TopicService,
               private router: Router, 
               private userService: UserService){}
 
@@ -21,8 +21,8 @@ export class ThemesComponent{
     });
   }
 
-  subscribe(theme_id:number){
-      this.userService.subscribe(theme_id);
+  subscribe(topicId:number){
+      this.userService.subscribe(topicId);
       this.reloadCurrentRoute();
   }
 

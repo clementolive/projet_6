@@ -18,12 +18,12 @@ export class UserService {
     this.httpClient.put<void>(this.pathService + "/" + this.userId, updateUserRequest).subscribe();
   }
 
-  public subscribe(themeId: number): void {
-    this.httpClient.post<void>(this.pathService + "/" + this.userId + "/subscribe/" + themeId, {}).subscribe();
+  public subscribe(topicId: number): void {
+    this.httpClient.post<void>(this.pathService + "/" + this.userId + "/subscribe/" + topicId, {}).subscribe();
   }
 
-  public unsubscribe(themeId: number): void {
-    this.httpClient.post<void>(this.pathService + "/" + this.userId + "/unsubscribe/" + themeId, {}).subscribe();
+  public unsubscribe(topicId: number): void {
+    this.httpClient.post<void>(this.pathService + "/" + this.userId + "/unsubscribe/" + topicId, {}).subscribe();
   }
 
 

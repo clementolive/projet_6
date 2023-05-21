@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="d-flex justify-content-between">
-    <button class="btn btn-primary m-2" routerLink="../createArticle">Créer un article</button>
+    <button class="btn btn-primary m-2" routerLink="../createPost">Créer un article</button>
     <span class="d-flex">
         <h2 class="m-2">Trier par</h2>
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
@@ -13,16 +13,16 @@
 </div>
 
 <div class="row row-cols-2">
-    <div *ngFor="let article of articles$ | async">
+    <div *ngFor="let post of posts$ | async">
         <div class="col">
             <div class="card bg-light m-2">
                 <div class="card-body">
-                    <p class="card-title h4" (click)="goToDetail(article.id)">{{article.title}}</p>
+                    <p class="card-title h4" (click)="goToDetail(post.id)">{{post.title}}</p>
                     <span class="d-flex justify-content-between col-4 mb-3 m-1">
-                        <div>{{article.createdAt | date: 'dd/MM/yyyy'}}</div>
-                        <div>{{article.author_name}}</div>
+                        <div>{{post.createdAt | date: 'dd/MM/yyyy'}}</div>
+                        <div>{{post.author_name}}</div>
                     </span>
-                    <p class="card-text">{{article.content}}</p>
+                    <p class="card-text">{{post.content}}</p>
                 </div>
             </div>
         </div>

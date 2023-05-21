@@ -1,14 +1,14 @@
 <app-navbar></app-navbar>
 
 <div class="row row-cols-2">
-    <div *ngFor="let theme of themes$ | async">
+    <div *ngFor="let topic of topics$ | async">
         <div class="col">
             <div class="card bg-light m-2">
                 <div class="card-body">
-                    <p class="card-title h4">{{theme.title}}</p>
-                    <p class="card-text">{{theme.description}}</p>
+                    <p class="card-title h4">{{topic.title}}</p>
+                    <p class="card-text">{{topic.description}}</p>
                     <div class="text-center">
-                        <button class="btn btn-primary" (click)="subscribe(theme.theme_id)">S'abonner</button>
+                        <button class="btn btn-primary" (click)="subscribe(topic.theme_id)">S'abonner</button>
                     </div>
                 </div>
             </div>
