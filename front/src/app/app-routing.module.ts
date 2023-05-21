@@ -5,11 +5,11 @@ import { TopicsComponent } from './features/topics/topics.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { ProfileComponent } from './features/profile/profile.component';
-import { CreatePostComponent } from './features/articles/create-post/create-post.component';
-import { DetailPostComponent } from './features/articles/detail-post/detail-post.component';
+import { CreatePostComponent } from './features/posts/create-post/create-post.component';
+import { DetailPostComponent } from './features/posts/detail-post/detail-post.component';
 import { AuthGuard } from './guards/auth.guard';
 import { UnauthGuard } from './guards/unauth.guard';
-import { FeedComponent } from './features/articles/feed/feed.component';
+import { FeedComponent } from './features/posts/feed/feed.component';
 
 /** No UnauthGuard for Register : A logged in  user might want to create a new account */
 const routes: Routes = [

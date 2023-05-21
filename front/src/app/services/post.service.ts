@@ -10,14 +10,14 @@ import { SessionService } from './session.service';
 })
 export class PostService {
 
-  private pathService = 'api/article';
+  private pathService = 'api/post';
   userId = this.sessionService.sessionInformation!.id;
 
   constructor(private httpClient: HttpClient, 
     private sessionService: SessionService) { }
 
   public allSubscribed(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>("api/user/subscribedArticles/" + this.userId);
+    return this.httpClient.get<Post[]>("api/user/subscribedPosts/" + this.userId);
   }
 
   public createPost(request: CreatePostRequest): void{

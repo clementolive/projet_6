@@ -1,5 +1,5 @@
 export interface CreatePostRequest {
-    theme: string;
+    topic: string;
     title: string;
     content: string;
 }

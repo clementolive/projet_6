@@ -1,4 +1,4 @@
 export interface SubscribeTopicRequest {
-   theme_id: number;
+   topic_id: number;
    
 }

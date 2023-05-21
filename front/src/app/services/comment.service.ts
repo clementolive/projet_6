@@ -7,12 +7,12 @@ import { CreateCommentRequest } from '../payload/request/createCommentRequest.in
 })
 export class CommentService {
 
-  private pathService = 'api/article';
+  private pathService = 'api/post';
 
   constructor(private httpClient: HttpClient) { }
 
-  public postComment(articleId: number, request: CreateCommentRequest): void{
-    this.httpClient.post<void>(this.pathService + "/" + articleId, request).subscribe();
+  public postComment(postId: number, request: CreateCommentRequest): void{
+    this.httpClient.post<void>(this.pathService + "/" + postId, request).subscribe();
     console.log("create comment request sent (frontend)");
   }
 }

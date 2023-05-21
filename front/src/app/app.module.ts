@@ -10,11 +10,11 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './features/profile/profile.component';
-import { CreatePostComponent } from './features/articles/create-post/create-post.component';
-import { DetailPostComponent } from './features/articles/detail-post/detail-post.component';
+import { CreatePostComponent } from './features/posts/create-post/create-post.component';
+import { DetailPostComponent } from './features/posts/detail-post/detail-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
-import { FeedComponent } from './features/articles/feed/feed.component';
+import { FeedComponent } from './features/posts/feed/feed.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, TopicsComponent, LoginComponent,

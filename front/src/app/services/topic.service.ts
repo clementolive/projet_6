@@ -8,7 +8,7 @@ import { SessionService } from './session.service';
   providedIn: 'root'
 })
 export class TopicService {
-  private pathService = 'api/theme';
+  private pathService = 'api/topic';
 
   constructor(private httpClient: HttpClient, 
     private sessionService: SessionService) { }
