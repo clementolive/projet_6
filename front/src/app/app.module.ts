@@ -15,11 +15,12 @@ import { DetailPostComponent } from './features/posts/detail-post/detail-post.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { FeedComponent } from './features/posts/feed/feed.component';
+import { AuthNavbarComponent } from './features/auth/auth-navbar/auth-navbar.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, TopicsComponent, LoginComponent,
      RegisterComponent, NavbarComponent,
-      FeedComponent, ProfileComponent, CreatePostComponent, DetailPostComponent],
+      FeedComponent, ProfileComponent, CreatePostComponent, DetailPostComponent, AuthNavbarComponent],
   imports: [BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

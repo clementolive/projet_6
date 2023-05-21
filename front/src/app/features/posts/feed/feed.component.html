@@ -12,19 +12,19 @@
     </span>
 </div>
 
-<div class="row row-cols-2">
-    <div *ngFor="let post of posts$ | async">
-        <div class="col">
-            <div class="card bg-light m-2">
-                <div class="card-body">
-                    <p class="card-title h4" (click)="goToDetail(post.id)">{{post.title}}</p>
-                    <span class="d-flex justify-content-between col-4 mb-3 m-1">
-                        <div>{{post.createdAt | date: 'dd/MM/yyyy'}}</div>
-                        <div>{{post.author_name}}</div>
-                    </span>
-                    <p class="card-text">{{post.content}}</p>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let post of posts$ | async" class="col-12 col-md-6 col-lg-6">
+                <div class="card bg-light m-2">
+                    <div class="card-body">
+                        <p class="card-title h4" (click)="goToDetail(post.id)">{{post.title}}</p>
+                        <span class="d-flex col-4 mb-3 m-1">
+                            <div class="m-2">{{post.createdAt | date: 'dd/MM/yyyy'}}</div>
+                            <div class="m-2">{{post.author_name}}</div>
+                        </span>
+                        <p class="card-text">{{post.content}}</p>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

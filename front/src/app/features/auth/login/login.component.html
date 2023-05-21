@@ -1,15 +1,11 @@
-<nav class="navbar navbar-light bg-light border-bottom">
-    <a class="navbar-brand" routerLink="">
-      <img src="/assets/logo_p6.png" class = "img-fluid" width="120px" alt="">
-    </a>
-</nav>
+<app-auth-navbar></app-auth-navbar>
 
 <form class="form-signin d-flex align-items-center flex-column text-center mt-3" [formGroup]="form" (ngSubmit)="submit()">
     <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
 
     <div class="col-4 align-self-center">
         <div class="form-group">
-            <label for="inputEmail">E-mail ou nom d'utilisateur</label>
+            <label for="inputEmail">E-mail</label>
             <input type="text" class="form-control mb-3" formControlName="email">
         </div>
 
