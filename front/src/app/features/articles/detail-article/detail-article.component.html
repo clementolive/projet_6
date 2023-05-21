@@ -4,16 +4,13 @@
     <div class="card bg-light m-2">
         <div class="card-body" >
 
-
             <span class="d-flex align-items-center">
                 <svg class="bi bi-arrow-left m-3" xmlns="http://www.w3.org/2000/svg" 
                 width="32" height="32" fill="currentColor" viewBox="0 0 16 16"
                 (click)="back()">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                 </svg>
-
                 <p class="card-title h4">{{article.title}}</p>
-
             </span>
 
             <span class="d-flex">
@@ -29,19 +26,16 @@
     <hr>
 
     <h1 class="m-3">Commentaires</h1>
-
- 
-        <div *ngFor="let oneComment of article.comments" >
-            <div *ngIf="oneComment">
-                <div class="card commentary bg-light m-2">
-                    <div class="card-body"> 
-                        <h3 class="card-title">{{ oneComment.author_name }}</h3>
-                        <p class="card-text">{{ oneComment.content }}</p>
-                    </div>
+    <div *ngFor="let oneComment of article.comments" >
+        <div *ngIf="oneComment">
+            <div class="card commentary bg-light m-2">
+                <div class="card-body"> 
+                    <h3 class="card-title">{{ oneComment.author_name }}</h3>
+                    <p class="card-text">{{ oneComment.content }}</p>
                 </div>
             </div>
         </div>
-
+    </div>
 </div>
 
 <form class="form-signin d-flex align-items-center flex-column text-center mt-3" [formGroup]="form" (ngSubmit)="submit()">

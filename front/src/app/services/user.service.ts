@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { UpdateUserRequest } from '../payload/request/updateUserRequest.interface';
 import { SessionService } from './session.service';
 

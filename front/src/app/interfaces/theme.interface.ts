@@ -3,5 +3,5 @@ export interface Theme {
     title: string;
     description: string;
     
-    subscribed: boolean;
+    subscribed: boolean; //Not used yet, useful if we need to show subscribed themes in Themes page 
 }

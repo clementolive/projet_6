@@ -17,10 +17,6 @@ export class ArticleService {
   constructor(private httpClient: HttpClient, 
     private sessionService: SessionService) { }
 
-  public all(): Observable<Article[]> {
-    return this.httpClient.get<Article[]>(this.pathService);
-  }
-
   public all_subscribed(): Observable<Article[]> {
     return this.httpClient.get<Article[]>("api/user/subscribedArticles/" + this.userId);
   }

@@ -17,13 +17,7 @@ export class ArticlesComponent {
   public articles$: Observable<Article[]> = this.articleService.all_subscribed();
 
   goToDetail(articleId: number) {
-    //this.router.navigate(['detailArticle/${articleId}']);
     this.router.navigate(["detailArticle", articleId]);
   }
   
-  //Sort articles by Date 
-  sort(){
-
-  }
-
 }

@@ -12,3 +12,5 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 INSERT INTO `theme` (`theme_id`, `description`, `title`) VALUES ('3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'CSS news ');
+
+-- From here, user should be able to create articles, subscribe to Themes, update profile and comment articles. 
