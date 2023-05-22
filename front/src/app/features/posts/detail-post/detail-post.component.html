@@ -28,10 +28,18 @@
     <h1 class="m-3">Commentaires</h1>
     <div *ngFor="let oneComment of post.comments" >
         <div *ngIf="oneComment">
-            <div class="card commentary bg-light m-2">
-                <div class="card-body"> 
-                    <h3 class="card-title">{{ oneComment.author_name }}</h3>
-                    <p class="card-text">{{ oneComment.content }}</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <h3 class="card-title">{{ oneComment.author_name }}</h3>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="card commentary bg-light m-2">
+                            <div class="card-body"> 
+                                <p class="card-text">{{ oneComment.content }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -9,4 +9,10 @@ export class NavbarComponent {
 
   constructor() { }
 
+  navbarOpen = false;
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
+
 }

@@ -52,4 +52,8 @@ export class CreatePostComponent{
     this.router.navigate(['feed']);
   }
 
+  public back(): void {
+    window.history.back();
+  }
+
 }
