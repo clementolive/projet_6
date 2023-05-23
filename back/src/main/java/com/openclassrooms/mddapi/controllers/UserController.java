@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/** This Controller handles User (for profile page) but also subscriptions, because they are Mapped in User entity */
 @RestController
 public class UserController {
 
@@ -54,7 +55,7 @@ public class UserController {
         return new MessageResponse("Subscribed to new topic");
     }
 
-    @PostMapping("/api/user/{id}/unsubscribe/{topic_id}")
+    @DeleteMapping("/api/user/{id}/unsubscribe/{topic_id}")
     public MessageResponse unsubscribeToTopic(@PathVariable("id") Long id, @PathVariable("topic_id") Long topic_id){
         User user = userService.findById(id);
         Topic topic = topicController.getTopicById(topic_id);

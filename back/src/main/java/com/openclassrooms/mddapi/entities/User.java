@@ -16,11 +16,7 @@ import java.util.List;
         @UniqueConstraint(columnNames = "email")
 })
 @Data
-
-@Accessors(chain = true)
-@EntityListeners(AuditingEntityListener.class)
 @EqualsAndHashCode(of = {"id"})
-
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

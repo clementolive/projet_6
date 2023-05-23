@@ -14,7 +14,8 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/** This class is used as a error handler */
+/** This class is used as a error handler. For unauthenticated HTTP requests,
+ * this can send a customized "Unauthorized request" message with a code 401 (SC_UNAUTHORIZED) */
 
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {

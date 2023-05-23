@@ -8,6 +8,7 @@ import com.openclassrooms.mddapi.models.response.JwtResponse;
 import com.openclassrooms.mddapi.models.response.MessageResponse;
 import com.openclassrooms.mddapi.repositories.UserRepository;
 import com.openclassrooms.mddapi.security.jwt.JwtUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,24 +21,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/** This Controller handles login and Register routes, using Spring Security to check email/password */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-    private final AuthenticationManager authenticationManager;
-    private final JwtUtils jwtUtils;
-    private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository;
-
-    AuthController(AuthenticationManager authenticationManager,
-                   PasswordEncoder passwordEncoder,
-                   JwtUtils jwtUtils,
-                   UserRepository userRepository) {
-        this.authenticationManager = authenticationManager;
-        this.jwtUtils = jwtUtils;
-        this.passwordEncoder = passwordEncoder;
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    AuthenticationManager authenticationManager;
+    @Autowired
+    JwtUtils jwtUtils;
+    @Autowired
+    PasswordEncoder passwordEncoder;
+    @Autowired
+    UserRepository userRepository;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {

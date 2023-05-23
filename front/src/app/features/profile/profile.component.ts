@@ -21,19 +21,12 @@ export class ProfileComponent  {
 
     public form = this.fb.group({
       username: [
-        '',
-        [
-          Validators.required,
-          
-        ]
-      ],
+        '', [Validators.required]],
       email: [
-        '',
-        [
+        '',[
           Validators.required,
           Validators.email
-        ]
-      ]
+        ]]
     });
 
     reloadCurrentRoute() {

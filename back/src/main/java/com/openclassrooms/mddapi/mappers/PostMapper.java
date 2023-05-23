@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-
+/** This mapper gets a commentDto list and set it in PostDto to simplify JSON data */
 @Mapper(componentModel = "spring")
 public abstract class PostMapper {
 

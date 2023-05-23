@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import java.util.List;
 
+/** For each comment, we only need to show comment content and its author */
 @Mapper(componentModel = "spring")
 public interface CommentMapper {
     @Mapping(target="author_name", expression="java(comment.getUser().getUsername())")

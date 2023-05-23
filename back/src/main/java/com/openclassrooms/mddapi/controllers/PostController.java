@@ -46,14 +46,15 @@ public class PostController {
         return postMapper.postToPostDto(post);
     }
 
+    /** Not a part of features. Useful for testing */
     @GetMapping("/api/post")
     public List<PostDto> findAll() {
         List<Post> posts = postService.findAll();
         return postMapper.postToPostDto(posts);
     }
 
+    /** A new article needs an author (user) and an associated Topic */
     @PostMapping("/api/post")
-    /** A new articles needs an author (user) and an associated Topic */
     public MessageResponse createPost(@RequestBody CreatePostRequest req){
         Topic topic = topicService.findByTitle(req.getTopic());
 
@@ -69,6 +70,7 @@ public class PostController {
         return new MessageResponse("Post created");
     }
 
+    /** A new comment must know its author (user) and we add the comment inside the comment list from a Post */
     @PostMapping("/api/post/{id}")
     public MessageResponse commentPost(@PathVariable("id") Long id, @RequestBody CommentRequest req) {
 

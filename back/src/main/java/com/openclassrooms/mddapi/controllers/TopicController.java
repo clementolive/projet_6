@@ -25,14 +25,10 @@ public class TopicController {
         return topicMapper.topicToTopicDto(topicList);
     }
 
+    /** Used inside the API only, the frontend sends the topicId to UserController (see unsubscribeToTopic)*/
     @GetMapping("/api/topic/{id}")
     public Topic getTopicById(@PathVariable("id") Long id){
         return topicService.findById(id);
-    }
-
-    @GetMapping("/api/topic/{title}")
-    public Topic getTopicByTitle(@PathVariable("title") String title){
-        return topicService.findByTitle(title);
     }
 
 

@@ -16,6 +16,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+/** This class uses JwtUtils utility functions to validate the JWT token. It parses it, then validate JWT format.
+ * If JWT is ok, username is extracted, and used to authenticate. */
 public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUtils jwtUtils;

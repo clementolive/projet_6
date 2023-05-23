@@ -23,7 +23,7 @@ export class UserService {
   }
 
   public unsubscribe(topicId: number): void {
-    this.httpClient.post<void>(this.pathService + "/" + this.userId + "/unsubscribe/" + topicId, {}).subscribe();
+    this.httpClient.delete<void>(this.pathService + "/" + this.userId + "/unsubscribe/" + topicId, {}).subscribe();
   }
 
 
