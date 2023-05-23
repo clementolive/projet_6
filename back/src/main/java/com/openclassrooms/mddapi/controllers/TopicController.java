@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
+/** This is used only to get all topics. There is no user-based topic creation in this project. */
 @RestController
 public class TopicController {
 

@@ -20,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+/** This is used to create posts, and also comment on them. */
 @RestController
 public class PostController {
 
