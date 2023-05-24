@@ -17,7 +17,8 @@ export class ProfileComponent  {
   constructor(private fb: FormBuilder,
     private router: Router, 
     private topicService: TopicService, 
-    private userService: UserService) {}
+    private userService: UserService, 
+    private sessionService: SessionService) {}
 
     public form = this.fb.group({
       username: [
@@ -42,6 +43,7 @@ export class ProfileComponent  {
     }
 
     unsubscribe(topicId:number){
+        let userId = 0;
         this.userService.unsubscribe(topicId);
         this.reloadCurrentRoute();
     }

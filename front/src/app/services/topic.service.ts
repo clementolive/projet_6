@@ -18,7 +18,7 @@ export class TopicService {
   }
 
   public subscribedTopics():  Observable<Topic[]> {
-    let user_id = this.sessionService.sessionInformation!.id;
-    return this.httpClient.get<Topic[]>("api/user/" + user_id + "/subscriptions");
+    let userId = this.sessionService.sessionInformation?.id;
+    return this.httpClient.get<Topic[]>("api/user/" + userId + "/subscriptions");
   }
 }

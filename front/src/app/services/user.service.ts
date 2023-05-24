@@ -9,21 +9,23 @@ import { SessionService } from './session.service';
 export class UserService {
 
   private pathService = 'api/user';
-  userId = this.sessionService.sessionInformation!.id;
 
   constructor(private httpClient: HttpClient, 
     private sessionService: SessionService) { }
 
   public updateUser(updateUserRequest: UpdateUserRequest): void {
-    this.httpClient.put<void>(this.pathService + "/" + this.userId, updateUserRequest).subscribe();
+    let userId = this.sessionService.sessionInformation?.id;
+    this.httpClient.put<void>(this.pathService + "/" + userId, updateUserRequest).subscribe();
   }
 
   public subscribe(topicId: number): void {
-    this.httpClient.post<void>(this.pathService + "/" + this.userId + "/subscribe/" + topicId, {}).subscribe();
+    let userId = this.sessionService.sessionInformation?.id;
+    this.httpClient.post<void>(this.pathService + "/" + userId + "/subscribe/" + topicId, {}).subscribe();
   }
 
   public unsubscribe(topicId: number): void {
-    this.httpClient.delete<void>(this.pathService + "/" + this.userId + "/unsubscribe/" + topicId, {}).subscribe();
+    let userId = this.sessionService.sessionInformation?.id;
+    this.httpClient.delete<void>(this.pathService + "/" + userId + "/unsubscribe/" + topicId, {}).subscribe();
   }
 
 
