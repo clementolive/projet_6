@@ -33,17 +33,13 @@ export class DetailPostComponent {
     window.history.back();
   }
 
-  reloadCurrentRoute() {
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-        this.router.navigate([currentUrl]);
-    });
-}
-
   public submit(): void{
     const createCommentRequest = this.form.value as CreateCommentRequest;
-    this.commentService.postComment(this.postId, createCommentRequest);
-    this.reloadCurrentRoute();
+    this.commentService.postComment(this.postId, createCommentRequest).subscribe({
+      next: () =>{
+        this.post$ = this.postService.getPostById(this.postId);
+      }
+    });
   }
 
 }

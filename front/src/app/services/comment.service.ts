@@ -11,8 +11,7 @@ export class CommentService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public postComment(postId: number, request: CreateCommentRequest): void{
-    this.httpClient.post<void>(this.pathService + "/" + postId, request).subscribe();
-    console.log("create comment request sent (frontend)");
+  public postComment(postId: number, request: CreateCommentRequest): any{
+    return this.httpClient.post<void>(this.pathService + "/" + postId, request);
   }
 }

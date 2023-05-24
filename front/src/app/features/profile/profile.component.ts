@@ -30,21 +30,16 @@ export class ProfileComponent  {
         ]]
     });
 
-    reloadCurrentRoute() {
-      let currentUrl = this.router.url;
-      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-          this.router.navigate([currentUrl]);
-      });
-    }
-
     submit() {
       const updateUserRequest = this.form.value as UpdateUserRequest;
       this.userService.updateUser(updateUserRequest);
     }
 
     unsubscribe(topicId:number){
-        let userId = 0;
-        this.userService.unsubscribe(topicId);
-        this.reloadCurrentRoute();
+        this.userService.unsubscribeToATopic(topicId).subscribe({
+          next: () =>{
+            this.topics$ = this.topicService.subscribedTopics();
+          }
+        });
     }
 }

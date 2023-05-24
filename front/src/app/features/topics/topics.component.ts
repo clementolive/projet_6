@@ -16,17 +16,12 @@ export class TopicsComponent{
               private userService: UserService, 
               private sessionService: SessionService){}
 
-  reloadCurrentRoute() {
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-        this.router.navigate([currentUrl]);
-    });
-  }
-
   subscribe(topicId:number){
-      const userId = this.sessionService.sessionInformation!.id;
-      this.userService.subscribe(topicId);
-      this.reloadCurrentRoute();
+      this.userService.subscribeToATopic(topicId).subscribe({
+        next: () =>{
+          this.topics$ = this.topicService.all();
+        }
+      });
   }
 
 }

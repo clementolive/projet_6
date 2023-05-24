@@ -20,9 +20,8 @@ export class PostService {
     return this.httpClient.get<Post[]>("api/user/subscribedPosts/" + userId);
   }
 
-  public createPost(request: CreatePostRequest): void{
-    this.httpClient.post<void>(this.pathService, request).subscribe();
-    console.log("create post done");
+  public createPost(request: CreatePostRequest): any{
+    return this.httpClient.post<any>(this.pathService, request);
   }
 
   public getPostById(postId: number): Observable<Post> {
