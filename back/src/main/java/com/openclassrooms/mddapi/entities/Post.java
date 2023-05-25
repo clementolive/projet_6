@@ -2,8 +2,8 @@ package com.openclassrooms.mddapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.*;
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -25,16 +25,16 @@ public class Post {
     Date createdAt;
     @JsonBackReference
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @ManyToOne
     Topic topic;
 
     @NotNull
     @JsonBackReference // Important even in one-directional relationship (error otherwise)
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @ManyToOne
     User user;
 
     @JsonManagedReference
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany
     @OrderColumn
     List<Comment> comments;
 

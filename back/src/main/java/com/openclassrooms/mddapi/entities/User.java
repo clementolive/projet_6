@@ -1,11 +1,11 @@
 package com.openclassrooms.mddapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.Accessors;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.Collection;
@@ -36,8 +36,9 @@ public class User implements UserDetails {
     @Size(max = 120)
     private String password;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.UUIDGenerator.class, property="@UUID")
     @ManyToMany
-    @JoinTable (name = "User_Topic_Association", joinColumns = {
+    @JoinTable(name = "User_Topic_Association", joinColumns = {
             @JoinColumn(name = "id", referencedColumnName = "id")}, inverseJoinColumns = {
             @JoinColumn(name = "topic_id", referencedColumnName = "topic_id")}, uniqueConstraints = @UniqueConstraint(columnNames = {
             "id", "topic_id" }))

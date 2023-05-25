@@ -1,10 +1,10 @@
 package com.openclassrooms.mddapi.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -19,7 +19,8 @@ public class Topic {
     String description;
 
     @JsonManagedReference
-    @OneToMany( mappedBy = "topic", fetch = FetchType.LAZY,
+    @JsonIgnore
+    @OneToMany( mappedBy = "topic",
             orphanRemoval = true)
     List<Post> postList;
 

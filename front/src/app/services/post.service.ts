@@ -21,7 +21,7 @@ export class PostService {
   }
 
   public createPost(request: CreatePostRequest): any{
-    return this.httpClient.post<any>(this.pathService, request);
+    return this.httpClient.post<any>(this.pathService, request).subscribe();
   }
 
   public getPostById(postId: number): Observable<Post> {
