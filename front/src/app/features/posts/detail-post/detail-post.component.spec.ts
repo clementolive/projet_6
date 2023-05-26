@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 
 describe('DetailPostComponent', () => {
   let component: DetailPostComponent;
@@ -22,7 +23,7 @@ describe('DetailPostComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create ', () => {
     expect(component).toBeTruthy();
   });
 });

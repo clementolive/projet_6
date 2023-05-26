@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProfileComponent } from './profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { By } from '@angular/platform-browser';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -22,5 +23,8 @@ describe('ProfileComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+
+    const title = fixture.debugElement.query(By.css('h1')).nativeElement;
+    expect(title.innerHTML).toBe('Profil utilisateur');
   });
 });

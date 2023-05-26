@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopicsComponent } from './topics.component';
 import { HttpClientModule } from '@angular/common/http';
+import { By } from '@angular/platform-browser';
 
 describe('TopicsComponent', () => {
   let component: TopicsComponent;
