@@ -1,6 +1,6 @@
 
-describe('My First Test', () => {
-  it('Visits the initial project page', () => {
+describe('Testing login', () => {
+  it('Visits the login page', () => {
     cy.visit('/');
     cy.get('button').should("contain", "Se connecter");
     cy.get('button').should("contain", "S'inscrire");
