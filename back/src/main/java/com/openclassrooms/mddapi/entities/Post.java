@@ -34,7 +34,7 @@ public class Post {
     User user;
 
     @JsonManagedReference
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     @OrderColumn
     List<Comment> comments;
 

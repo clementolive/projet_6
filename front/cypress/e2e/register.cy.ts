@@ -13,7 +13,7 @@ describe('Testing register', () => {
       cy.get('input[formControlName=email]').type("test@test.com")
       cy.get('input[formControlName=password]').type(`${"Test!1234"}{enter}{enter}`)
   
-      cy.get('button').should("contain", "Inscription").click();
+      cy.get('button').should("contain", "Se connecter");
   
     })
   })
