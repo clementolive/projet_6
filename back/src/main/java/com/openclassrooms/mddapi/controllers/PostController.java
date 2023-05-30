@@ -6,7 +6,6 @@ import com.openclassrooms.mddapi.entities.Comment;
 import com.openclassrooms.mddapi.entities.Topic;
 import com.openclassrooms.mddapi.entities.User;
 import com.openclassrooms.mddapi.mappers.PostMapper;
-import com.openclassrooms.mddapi.mappers.CommentMapper;
 import com.openclassrooms.mddapi.models.requests.CommentRequest;
 import com.openclassrooms.mddapi.models.requests.CreatePostRequest;
 import com.openclassrooms.mddapi.models.response.MessageResponse;
@@ -31,8 +30,6 @@ public class PostController {
 
     @Autowired
     private PostService postService;
-    @Autowired
-    private CommentMapper commentMapper;
 
     @Autowired
     private TopicService topicService;

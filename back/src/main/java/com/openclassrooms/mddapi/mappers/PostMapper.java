@@ -1,6 +1,8 @@
 package com.openclassrooms.mddapi.mappers;
 
+import com.openclassrooms.mddapi.dtos.CommentDto;
 import com.openclassrooms.mddapi.dtos.PostDto;
+import com.openclassrooms.mddapi.entities.Comment;
 import com.openclassrooms.mddapi.entities.Post;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -11,24 +13,23 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public abstract class PostMapper {
 
-    public CommentMapper commentMapper;
-
-    @Autowired
-    public final void setCommentMapper(CommentMapper commentMapper) {
-        this.commentMapper = commentMapper;
-    }
-
-    @Mapping(target="topic_name", expression="java(post.getTopic().getTitle())")
-    @Mapping(target="author_name", expression="java(post.getUser().getUsername())")
-    @Mapping(target="createdAt", expression="java(post.getCreatedAt())")
-    @Mapping(target="comments", expression="java(commentMapper.commentToCommentDtoArray(post.getComments()))")
+    @Mapping(target="topic_name", source="post.topic.title")
+    @Mapping(target="author_name", source="post.user.username")
+    @Mapping(target="createdAt", source="post.createdAt")
+    @Mapping(target="comments", source="post.comments")
     public abstract PostDto postToPostDto(Post post);
 
-    @Mapping(target="topic_name", expression="java(post.getTopic().getTitle())")
-    @Mapping(target="author_name", expression="java(post.getUser().getUsername())")
-    @Mapping(target="createdAt", expression="java(post.getCreatedAt())")
-    @Mapping(target="comments", expression="java(commentMapper.commentToCommentDtoArray(post.getComments()))")
+    @Mapping(target="topic_name", source="post.topic.title")
+    @Mapping(target="author_name", source="post.user.username")
+    @Mapping(target="createdAt", source="post.createdAt")
+    @Mapping(target="comments", source="post.comments")
     public abstract List<PostDto> postToPostDto(List<Post> post);
+
+    @Mapping(target="author_name", source="comment.user.username")
+    public abstract CommentDto commentToCommentDto(Comment comment);
+
+    @Mapping(target="author_name", source="comment.user.username")
+    public abstract List<CommentDto> commentToCommentDtoArray(List<Comment> comment);
 
     //This allows use of abstract class, which is needed for adding nested Mappers
     public void fun(){}
