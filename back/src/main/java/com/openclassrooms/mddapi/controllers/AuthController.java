@@ -6,8 +6,8 @@ import com.openclassrooms.mddapi.models.requests.LoginRequest;
 import com.openclassrooms.mddapi.models.requests.SignupRequest;
 import com.openclassrooms.mddapi.models.response.JwtResponse;
 import com.openclassrooms.mddapi.models.response.MessageResponse;
-import com.openclassrooms.mddapi.repositories.UserRepository;
 import com.openclassrooms.mddapi.security.jwt.JwtUtils;
+import com.openclassrooms.mddapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,7 +33,7 @@ public class AuthController {
     @Autowired
     PasswordEncoder passwordEncoder;
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -53,7 +53,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if ( userService.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already taken!"));
@@ -64,7 +64,7 @@ public class AuthController {
                 signUpRequest.getUsername(),
                 passwordEncoder.encode(signUpRequest.getPassword()));
 
-        userRepository.save(user);
+        userService.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
