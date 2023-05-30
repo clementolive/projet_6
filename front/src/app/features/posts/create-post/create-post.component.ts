@@ -48,7 +48,7 @@ export class CreatePostComponent{
 
   public submit(): void{
     const createpostRequest = this.form.value as CreatePostRequest;
-    this.postService.createPost(createpostRequest);
+    this.postService.createPost(createpostRequest).subscribe();
     this.router.navigate(['/feed']);
   }
 

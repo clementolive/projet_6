@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Post } from '../interfaces/post.interface';
 import { CreatePostRequest } from '../payload/request/createPostRequest.interface';
 import { SessionService } from './session.service';
+import { MessageResponse } from '../payload/reponse/MessageResponse.interface';
+import { Subscription } from 'cypress/types/net-stubbing';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +22,8 @@ export class PostService {
     return this.httpClient.get<Post[]>("api/user/subscribedPosts/" + userId);
   }
 
-  public createPost(request: CreatePostRequest): any{
-    return this.httpClient.post<any>(this.pathService, request).subscribe();
+  public createPost(request: CreatePostRequest): Observable<MessageResponse>{
+    return this.httpClient.post<MessageResponse>(this.pathService, request);
   }
 
   public getPostById(postId: number): Observable<Post> {
