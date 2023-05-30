@@ -14,14 +14,14 @@ import java.util.List;
 public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long topic_id;
-    String title;
-    String description;
+    private Long topic_id;
+    private String title;
+    private String description;
 
     @JsonManagedReference
     @JsonIgnore
     @OneToMany( mappedBy = "topic",
             orphanRemoval = true)
-    List<Post> postList;
+    private List<Post> postList;
 
 }

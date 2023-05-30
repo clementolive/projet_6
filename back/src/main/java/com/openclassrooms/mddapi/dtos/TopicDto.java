@@ -7,8 +7,8 @@ import lombok.Generated;
 @Generated
 public class TopicDto {
 
-    Long topic_id;
-    String title;
-    String description;
-    boolean subscribed;
+    private Long topic_id;
+    private String title;
+    private String description;
+    private boolean subscribed;
 }

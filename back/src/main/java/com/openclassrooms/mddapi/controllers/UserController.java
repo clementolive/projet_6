@@ -19,13 +19,13 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    TopicController topicController;
+    private TopicController topicController;
 
     @Autowired
-    PostMapper postMapper;
+    private PostMapper postMapper;
 
     @PutMapping("/api/user/{id}")
     public MessageResponse updateUser(@PathVariable("id") Long id, @RequestBody UpdateUserRequest req) {

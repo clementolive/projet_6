@@ -11,7 +11,7 @@ import java.util.List;
 public class PostService {
 
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
 
     public Post getById(Long articleId){
         return postRepository.getReferenceById(articleId);

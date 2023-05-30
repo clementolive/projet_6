@@ -6,8 +6,8 @@ import lombok.Generated;
 @Data
 @Generated
 public class CommentDto {
-    String content;
+    private String content;
 
-    String author_name;
+    private String author_name;
 
 }

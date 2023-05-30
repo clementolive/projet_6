@@ -9,12 +9,12 @@ import java.util.List;
 @AllArgsConstructor
 @Generated
 public class PostDto {
-    Long id;
-    String title;
-    String content;
-    String topic_name;
-    String author_name;
-    Date createdAt;
-    List<CommentDto> comments;
+    private Long id;
+    private String title;
+    private  String content;
+    private String topic_name;
+    private String author_name;
+    private Date createdAt;
+    private List<CommentDto> comments;
 
 }

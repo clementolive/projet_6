@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class TopicService {
     @Autowired
-    TopicRepository topicRepository;
+    private TopicRepository topicRepository;
 
     public List<Topic> findAll(){
         return topicRepository.findAll();

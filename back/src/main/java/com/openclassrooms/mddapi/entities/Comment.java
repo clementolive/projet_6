@@ -16,13 +16,13 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String content;
+    private Long id;
+    private String content;
     @CreationTimestamp
-    Date createdAt;
+    private Date createdAt;
 
     @ManyToOne
     @JsonBackReference
-    User user;
+    private User user;
 
 }

@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class CreatePostRequest {
-    String topic;
-    String title;
-    String content;
+    private String topic;
+    private  String title;
+    private String content;
 }

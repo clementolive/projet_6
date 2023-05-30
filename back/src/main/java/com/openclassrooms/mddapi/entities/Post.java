@@ -16,27 +16,27 @@ import java.util.List;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     @NotBlank
-    String title;
+    private String title;
     @NotBlank
-    String content;
+    private String content;
     @Column(name="created_at")
-    Date createdAt;
+    private Date createdAt;
     @JsonBackReference
     @NotNull
     @ManyToOne
-    Topic topic;
+    private Topic topic;
 
     @NotNull
     @JsonBackReference // Important even in one-directional relationship (error otherwise)
     @ManyToOne
-    User user;
+    private User user;
 
     @JsonManagedReference
     @OneToMany(cascade=CascadeType.ALL)
     @OrderColumn
-    List<Comment> comments;
+    private List<Comment> comments;
 
     public Post(String title, String content, Topic topic, User user){
         this.title = title;

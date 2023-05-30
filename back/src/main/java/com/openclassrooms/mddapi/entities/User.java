@@ -42,7 +42,7 @@ public class User implements UserDetails {
             @JoinColumn(name = "id", referencedColumnName = "id")}, inverseJoinColumns = {
             @JoinColumn(name = "topic_id", referencedColumnName = "topic_id")}, uniqueConstraints = @UniqueConstraint(columnNames = {
             "id", "topic_id" }))
-    List<Topic> topicList;
+    private List<Topic> topicList;
 
     public User(String email, String username, String encode) {
         this.email =   email;

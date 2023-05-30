@@ -15,10 +15,10 @@ import java.util.List;
 public class TopicController {
 
     @Autowired
-    TopicService topicService;
+    private TopicService topicService;
 
     @Autowired
-    TopicMapper topicMapper;
+    private TopicMapper topicMapper;
 
     @GetMapping("/api/topic")
     public List<TopicDto> getTopics() {

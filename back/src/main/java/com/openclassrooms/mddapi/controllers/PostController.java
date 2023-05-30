@@ -25,21 +25,21 @@ import java.util.List;
 public class PostController {
 
     @Autowired
-    PostService postService;
+    private PostService postService;
     @Autowired
-    CommentMapper commentMapper;
+    private CommentMapper commentMapper;
 
     @Autowired
-    TopicService topicService;
+    private TopicService topicService;
 
     @Autowired
-    UserDetailsServiceImpl userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    PostMapper postMapper;
+    private PostMapper postMapper;
 
     @GetMapping("/api/post/{id}")
     public PostDto getPost(@PathVariable("id") Long id) {

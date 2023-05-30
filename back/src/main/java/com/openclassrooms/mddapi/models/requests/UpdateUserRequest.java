@@ -11,7 +11,7 @@ public class UpdateUserRequest {
     @NotBlank
     @Size(max = 50)
     @Email
-    String email;
+    private String email;
     @NotBlank
-    String username;
+    private String username;
 }
