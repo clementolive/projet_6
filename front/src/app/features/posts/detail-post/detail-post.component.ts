@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateCommentRequest } from 'src/app/payload/request/createCommentRequest.interface';
 import { PostService } from 'src/app/services/post.service';
 import { CommentService } from 'src/app/services/comment.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-detail-post',
   templateUrl: './detail-post.component.html',
   styleUrls: ['./detail-post.component.scss']
 })
-export class DetailPostComponent {
+export class DetailPostComponent implements OnDestroy{
   
   constructor(private route: ActivatedRoute, 
               private postService: PostService,
@@ -17,8 +18,10 @@ export class DetailPostComponent {
               private fb: FormBuilder,
               private router: Router) { }
 
+
   postId = this.route.snapshot.params['id'];
   post$ = this.postService.getPostById(this.postId);
+  commentSubscription!: Subscription;
 
   public form = this.fb.group({
     content: [
@@ -35,11 +38,15 @@ export class DetailPostComponent {
 
   public submit(): void{
     const createCommentRequest = this.form.value as CreateCommentRequest;
-    this.commentService.postComment(this.postId, createCommentRequest).subscribe({
+    this.commentSubscription = this.commentService.postComment(this.postId, createCommentRequest).subscribe({
       next: () =>{
         this.post$ = this.postService.getPostById(this.postId);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.commentSubscription.unsubscribe();
   }
 
 }

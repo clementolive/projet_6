@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { UpdateUserRequest } from '../payload/request/updateUserRequest.interface';
 import { SessionService } from './session.service';
 import { Observable } from 'rxjs';
-import { MessageResponse } from '../payload/reponse/MessageResponse.interface';
+import { MessageResponse } from '../payload/response/messageResponse.interface';
 
 @Injectable({
   providedIn: 'root'

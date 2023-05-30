@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services/session.service';
 import { LoginRequest } from '../interfaces/loginRequest.interface';
 import { SessionInformation } from '../interfaces/sessionInformation.interface';
 import { AuthService } from '../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent{
+export class LoginComponent implements OnDestroy{
   public onError = false;
+  public loginSubscription!: Subscription;
   
   constructor(private authService: AuthService,
     private fb: FormBuilder,
@@ -41,13 +43,17 @@ export class LoginComponent{
 
   public submit(): void {
     const loginRequest = this.form.value as LoginRequest;
-    this.authService.login(loginRequest).subscribe({
+    this.loginSubscription = this.authService.login(loginRequest).subscribe({
       next: (response: SessionInformation) => {
         this.sessionService.logIn(response);
         this.router.navigate(['/feed']);
       },
-      error: error => this.onError = true,
+      error: error => this.onError = true
     });
+  }
+
+  ngOnDestroy(): void {
+   this.loginSubscription.unsubscribe();
   }
 
 }

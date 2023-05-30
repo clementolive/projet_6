@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { SessionService } from 'src/app/services/session.service';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TopicService } from 'src/app/services/topic.service';
 import { UserService } from 'src/app/services/user.service';
 @Component({
@@ -8,20 +7,23 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './topics.component.html',
   styleUrls: ['./topics.component.scss']
 })
-export class TopicsComponent{
+export class TopicsComponent implements OnDestroy {
   public topics$ = this.topicService.all();
+  public topicSubscription!: Subscription;
 
   constructor(private topicService: TopicService,
-              private router: Router, 
-              private userService: UserService, 
-              private sessionService: SessionService){}
+              private userService: UserService){}
 
   subscribe(topicId:number){
-      this.userService.subscribeToATopic(topicId).subscribe({
-        next: () =>{
-          this.topics$ = this.topicService.all();
-        }
-      });
+    this.topicSubscription = this.userService.subscribeToATopic(topicId).subscribe({
+      next: () =>{
+        this.topics$ = this.topicService.all();
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+   this.topicSubscription.unsubscribe();
   }
 
 }

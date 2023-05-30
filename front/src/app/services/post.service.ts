@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 import { Post } from '../interfaces/post.interface';
 import { CreatePostRequest } from '../payload/request/createPostRequest.interface';
 import { SessionService } from './session.service';
-import { MessageResponse } from '../payload/reponse/MessageResponse.interface';
-import { Subscription } from 'cypress/types/net-stubbing';
+import { MessageResponse } from '../payload/response/messageResponse.interface';
 
 @Injectable({
   providedIn: 'root'

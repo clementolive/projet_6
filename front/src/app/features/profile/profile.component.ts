@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { UpdateUserRequest } from 'src/app/payload/request/updateUserRequest.interface';
 import { SessionService } from 'src/app/services/session.service';
 import { TopicService } from 'src/app/services/topic.service';
@@ -11,14 +11,14 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent  {
+export class ProfileComponent implements OnDestroy{
   public topics$ = this.topicService.subscribedTopics();
+  public topicSubscription!: Subscription;
 
   constructor(private fb: FormBuilder,
-    private router: Router, 
     private topicService: TopicService, 
-    private userService: UserService, 
-    private sessionService: SessionService) {}
+    private userService: UserService) {}
+
 
     public form = this.fb.group({
       username: [
@@ -36,10 +36,14 @@ export class ProfileComponent  {
     }
 
     unsubscribe(topicId:number){
-        this.userService.unsubscribeToATopic(topicId).subscribe({
+        this.topicSubscription = this.userService.unsubscribeToATopic(topicId).subscribe({
           next: () =>{
             this.topics$ = this.topicService.subscribedTopics();
           }
         });
+    }
+
+    ngOnDestroy(): void {
+      this.topicSubscription.unsubscribe();
     }
 }
