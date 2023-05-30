@@ -1,6 +1,9 @@
 package com.openclassrooms.mddapi.dtos;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Generated;
+import lombok.NoArgsConstructor;
 import java.util.Date;
 import java.util.List;
 

@@ -1,6 +1,10 @@
 package com.openclassrooms.mddapi.dtos;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Generated;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
