@@ -60,7 +60,7 @@ export class CreatePostComponent implements OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.postSubscription.unsubscribe();
+    if(this.postSubscription) this.postSubscription.unsubscribe();
   }
 
 }

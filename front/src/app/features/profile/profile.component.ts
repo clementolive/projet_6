@@ -44,6 +44,6 @@ export class ProfileComponent implements OnDestroy{
     }
 
     ngOnDestroy(): void {
-      this.topicSubscription.unsubscribe();
+      if(this.topicSubscription) this.topicSubscription.unsubscribe();
     }
 }

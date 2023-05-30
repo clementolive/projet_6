@@ -46,7 +46,7 @@ export class DetailPostComponent implements OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.commentSubscription.unsubscribe();
+    if(this.commentSubscription) this.commentSubscription.unsubscribe();
   }
 
 }
