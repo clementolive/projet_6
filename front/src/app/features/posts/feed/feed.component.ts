@@ -14,6 +14,7 @@ export class FeedComponent {
   constructor(private router: Router, 
     private postService: PostService) { }
 
+  // This is subscribed in DOM with async 
   public posts$: Observable<Post[]> = this.postService.allSubscribed();
 
   goToDetail(postId: number) {

@@ -19,7 +19,6 @@ export class CreatePostComponent implements OnDestroy{
               private postService: PostService) {
   }
 
-
   selectedTopic!: string;
   postSubscription! : Subscription;
   public topics$ = this.topicService.all();

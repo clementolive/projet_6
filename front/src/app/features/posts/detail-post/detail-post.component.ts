@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { CreateCommentRequest } from 'src/app/payload/request/createCommentRequest.interface';
 import { PostService } from 'src/app/services/post.service';
 import { CommentService } from 'src/app/services/comment.service';
@@ -15,9 +15,7 @@ export class DetailPostComponent implements OnDestroy{
   constructor(private route: ActivatedRoute, 
               private postService: PostService,
               private commentService: CommentService,
-              private fb: FormBuilder,
-              private router: Router) { }
-
+              private fb: FormBuilder) { }
 
   postId = this.route.snapshot.params['id'];
   post$ = this.postService.getPostById(this.postId);

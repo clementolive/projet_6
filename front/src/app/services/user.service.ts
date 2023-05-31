@@ -15,9 +15,9 @@ export class UserService {
   constructor(private httpClient: HttpClient, 
     private sessionService: SessionService) { }
 
-  public updateUser(updateUserRequest: UpdateUserRequest):void {
+  public updateUser(updateUserRequest: UpdateUserRequest):Observable<MessageResponse> {
     let userId = this.sessionService.sessionInformation?.id;
-    this.httpClient.put<MessageResponse>(this.pathService + "/" + userId, updateUserRequest);
+    return this.httpClient.put<MessageResponse>(this.pathService + "/" + userId, updateUserRequest);
   }
 
   public subscribeToATopic(topicId: number): Observable<MessageResponse> {
